@@ -1,0 +1,203 @@
+general:  
+  input_path: /net/mulan/home/penghuy/benchmark/data
+  output_base_path: /net/mulan/home/penghuy/benchmark/output
+  benchmarking_py: /net/mulan/home/penghuy/benchmark/methods_v1/benchmarking.py
+  partition: mulan-gpu   
+  memory: 64 
+  time: "48:00:00"  
+  rep: 1
+
+  dataset_names: ['D1']
+  selected_tools: ["cast","deepst","gpsa","graphst","inspire","paste","paste2","precast","santo","sder","slat","spacel","spateo_nr","spateo_r","spatialign","spiral","stagate","stalign","staligner","stamp","stg3net","stitch3d","moscot_nr","moscot_r"]
+
+cast:
+  metrics: ["pattern", "mapping"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12
+  tool_name: "CAST"
+  env_name: "cast"
+
+deepst:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12
+  tool_name: "DeepST"
+  env_name: "deepst"
+
+gpsa:
+  metrics: ["pattern", "mapping"]    
+  rigid: False      
+  gpus: 1
+  cpus: 24      
+  tool_name: "GPSA"
+  env_name: "gpsa"
+
+graphst:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12        
+  tool_name: "GraphST"
+  env_name: "graphst"
+
+inspire:
+  metrics: ["pattern", "embedding", "clustering", "mapping", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12          
+  tool_name: "INSPIRE"
+  env_name: "inspire"
+
+moscot_nr:
+  metrics: ["pattern", "mapping","matching"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12          
+  tool_name: "moscot_NR"
+  env_name: "moscot"
+
+moscot_r:
+  metrics: ["pattern", "mapping","r_transform","matching"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12          
+  tool_name: "moscot_R"
+  env_name: "moscot"
+
+paste:
+  metrics: ["pattern", "mapping", "matching", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12          
+  tool_name: "PASTE"
+  env_name: "paste"
+    
+paste2:
+  metrics: ["pattern", "mapping", "matching", "r_transform"]   
+  rigid: True      
+  gpus: 1
+  cpus: 12            
+  tool_name: "PASTE2"
+  env_name: "paste2"
+
+precast:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12        
+  tool_name: "PRECAST"
+  env_name: "precast"
+
+santo:
+  metrics: ["pattern", "mapping", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12          
+  tool_name: "SANTO"
+  env_name: "santo"
+
+sder:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12            
+  tool_name: "SDER"
+  env_name: "sder"
+
+slat:
+  metrics: ["pattern", "mapping", "matching", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12
+  tool_name: "SLAT"
+  env_name: "scslat"
+
+spacel:
+  metrics: ["pattern", "mapping", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12  
+  tool_name: "SPACEL"
+  env_name: "spacel"
+
+spateo_nr:
+  metrics: ["pattern", "mapping","nr_transform"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12    
+  tool_name: "Spateo_NR"
+  env_name: "spateo"
+
+spateo_r:
+  metrics: ["pattern", "mapping", "r_transform","matching"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12      
+  tool_name: "Spateo_R"
+  env_name: "spateo"
+
+spatialign:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12  
+  tool_name: "spatiAlign"
+  env_name: "spatialign"
+
+spiral:
+  metrics: ["pattern", "mapping", "embedding", "clustering"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12    
+  tool_name: "SPIRAL"
+  env_name: "spiral"    
+
+stagate:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12      
+  tool_name: "STAGATE"
+  env_name: "stagate"
+
+stalign:
+  metrics: ["pattern", "mapping"]    
+  rigid: False      
+  gpus: 1
+  cpus: 12        
+  tool_name: "STalign"
+  env_name: "stalign"
+
+staligner:
+  metrics: ["pattern", "mapping", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12            
+  tool_name: "STAligner"
+  env_name: "staligner"
+
+stamp:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12  
+  tool_name: "STAMP"
+  env_name: "stamp"
+
+stg3net:
+  metrics: ["pattern", "embedding", "clustering"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12    
+  tool_name: "STG3Net"
+  env_name: "stg3net"
+
+stitch3d:
+  metrics: ["pattern", "mapping", "r_transform"]    
+  rigid: True      
+  gpus: 1
+  cpus: 12      
+  tool_name: "STitch3D" 
+  env_name: "stitch3d"
