@@ -69,6 +69,9 @@ for sample in sample_list:
         peak_data = True
     else:
         peak_data = False
+        
+if pseudocount is not None:
+    print('### The pseudocount is:', pseudocount)
 
 print('### The input path is:', input_path)
 print('### The output path is:', base_output_path)
