@@ -1,0 +1,8 @@
+sample: ['T42','T44'] 
+multi_slice: False
+cluster_option: 'mclust'
+angle_true:
+overlap:
+pseudocount:
+distortion:
+subsample: False

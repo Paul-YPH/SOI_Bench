@@ -18,8 +18,8 @@ benchmark_dir = os.path.dirname(current_dir)
 sys.path.append(benchmark_dir)
 from metrics.utils import *
 
-#################### Run SDER ####################
-def run_SDER(ann_list, sample_list, cluster_option):
+#################### Run SEDR ####################
+def run_SEDR(ann_list, sample_list, cluster_option):
     for ann in ann_list:
         graph_dict_tmp = SEDR.graph_construction(ann, 12)
 

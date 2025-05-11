@@ -338,14 +338,14 @@ def run_benchmarking(input_path,
         ann_list = subsample_adata(ann_list, subsample, 20000)
         adata, pi_list, matching_cell_ids_list = run_scSLAT(ann_list,peak_data)
 
-    elif env_name == 'sder':
+    elif env_name == 'sedr':
         print('### Using SEDR environment')
-        from run_SDER import run_SDER
+        from run_SEDR import run_SEDR
         ann_list = subsample_adata(ann_list, subsample, 20000)
         for ann in ann_list:
             sc.pp.filter_cells(ann, min_genes=1)
             sc.pp.filter_genes(ann, min_cells=1)
-        adata = run_SDER(ann_list, sample_list, cluster_option)
+        adata = run_SEDR(ann_list, sample_list, cluster_option)
 
     elif env_name == 'spiral':
         print('### Using SPIRAL environment')

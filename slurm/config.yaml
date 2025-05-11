@@ -1,14 +1,16 @@
 general:  
-  input_path: /net/mulan/home/penghuy/benchmark/data
-  output_base_path: /net/mulan/home/penghuy/benchmark/output
-  benchmarking_py: /net/mulan/home/penghuy/benchmark/methods_v1/benchmarking.py
+  input_path: /net/mulan/home/penghuy/benchmark/data # path to the data
+  output_base_path: /net/mulan/home/penghuy/benchmark/output # path to the output
+  benchmarking_py: /net/mulan/home/penghuy/benchmark/methods_v1/benchmarking.py # path to the benchmarking script
   partition: mulan-gpu   
   memory: 64 
   time: "48:00:00"  
   rep: 1
 
-  dataset_names: ['D1']
-  selected_tools: ["cast","deepst","gpsa","graphst","inspire","paste","paste2","precast","santo","sder","slat","spacel","spateo_nr","spateo_r","spatialign","spiral","stagate","stalign","staligner","stamp","stg3net","stitch3d","moscot_nr","moscot_r"]
+  # dataset_name
+  dataset_names: ['SD1','SD2']
+  # selected_tools
+  selected_tools: ["cast","deepst","gpsa","graphst","inspire","paste","paste2","precast","santo","sedr","slat","spacel","spateo_nr","spateo_r","spatialign","spiral","stagate","stalign","staligner","stamp","stg3net","stitch3d","moscot_nr","moscot_r"]
 
 cast:
   metrics: ["pattern", "mapping"]    
@@ -98,13 +100,13 @@ santo:
   tool_name: "SANTO"
   env_name: "santo"
 
-sder:
+sedr:
   metrics: ["pattern", "embedding", "clustering"]    
   rigid: True      
   gpus: 1
   cpus: 12            
-  tool_name: "SDER"
-  env_name: "sder"
+  tool_name: "SEDR"
+  env_name: "sedr"
 
 slat:
   metrics: ["pattern", "mapping", "matching", "r_transform"]    

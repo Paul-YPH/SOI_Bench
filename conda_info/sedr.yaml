@@ -1,4 +1,4 @@
-name: sder
+name: sedr
 channels:
   - defaults
   - conda-forge
@@ -124,4 +124,4 @@ dependencies:
       - tzlocal==5.2
       - umap-learn==0.5.7
       - urllib3==2.3.0
-prefix: /net/mulan/home/penghuy/anaconda3/envs/sder
+prefix: /net/mulan/home/penghuy/anaconda3/envs/sedr
