@@ -1,4 +1,5 @@
-# Charting the Landscape of Spatial Omics Integration: A Comprehensive Benchmarking Study 
+# SOI_Bench
+## Charting the Landscape of Spatial Omics Integration: A Comprehensive Benchmarking Study 
 ### Penghui Yang<sup></sup>, Xiang Zhou*
 
 
