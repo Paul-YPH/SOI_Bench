@@ -60,7 +60,7 @@ python /path/to/benchmarking.py \
       --rigid True \
       --rep 1 \
       --tool_name SLAT \
-      --sample 151673_A 151673_B \
+      --sample T42 T44 \
       --multi_slice True \
       --cluster_option mclust \
       --subsample False
