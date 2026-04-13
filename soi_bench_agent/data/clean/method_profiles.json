@@ -1,0 +1,923 @@
+{
+  "embedding": {
+    "BANKSY": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 10.51,
+      "average_rank": 9.762376,
+      "average_runtime_seconds": 194.021,
+      "average_score": 0.713803,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "R"
+      ],
+      "method": "BANKSY",
+      "task_type": "embedding",
+      "win_count": 0
+    },
+    "CellCharter": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 2.59,
+      "average_rank": 6.742574,
+      "average_runtime_seconds": 166.789,
+      "average_score": 0.771344,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "CellCharter",
+      "task_type": "embedding",
+      "win_count": 3
+    },
+    "DeepST": {
+      "appearance_count": 96,
+      "average_peak_rss_gb": 10.667,
+      "average_rank": 7.135417,
+      "average_runtime_seconds": 241.967,
+      "average_score": 0.753177,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "DeepST",
+      "task_type": "embedding",
+      "win_count": 12
+    },
+    "GraphST": {
+      "appearance_count": 99,
+      "average_peak_rss_gb": 15.214,
+      "average_rank": 11.717172,
+      "average_runtime_seconds": 95.606,
+      "average_score": 0.644502,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "GraphST",
+      "task_type": "embedding",
+      "win_count": 1
+    },
+    "INSPIRE": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 7.812,
+      "average_rank": 14.514851,
+      "average_runtime_seconds": 82.568,
+      "average_score": 0.532757,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "INSPIRE",
+      "task_type": "embedding",
+      "win_count": 1
+    },
+    "NicheCompass_batch": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 5.393,
+      "average_rank": 13.56,
+      "average_runtime_seconds": 747.098,
+      "average_score": 0.552887,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "NicheCompass_batch",
+      "task_type": "embedding",
+      "win_count": 5
+    },
+    "PRECAST": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 10.731,
+      "average_rank": 8.326733,
+      "average_runtime_seconds": 315.451,
+      "average_score": 0.711507,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "R"
+      ],
+      "method": "PRECAST",
+      "task_type": "embedding",
+      "win_count": 9
+    },
+    "SEDR": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 4.433,
+      "average_rank": 12.06,
+      "average_runtime_seconds": 55.068,
+      "average_score": 0.610971,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SEDR",
+      "task_type": "embedding",
+      "win_count": 4
+    },
+    "SPIRAL": {
+      "appearance_count": 84,
+      "average_peak_rss_gb": 20.453,
+      "average_rank": 10.845238,
+      "average_runtime_seconds": 2164.845,
+      "average_score": 0.695444,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SPIRAL",
+      "task_type": "embedding",
+      "win_count": 2
+    },
+    "STADIA": {
+      "appearance_count": 95,
+      "average_peak_rss_gb": 13.564,
+      "average_rank": 13.631579,
+      "average_runtime_seconds": 198.48,
+      "average_score": 0.580461,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "R"
+      ],
+      "method": "STADIA",
+      "task_type": "embedding",
+      "win_count": 2
+    },
+    "STAGATE": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 2.419,
+      "average_rank": 4.851485,
+      "average_runtime_seconds": 79.452,
+      "average_score": 0.823307,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STAGATE",
+      "task_type": "embedding",
+      "win_count": 21
+    },
+    "STAMP": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 3.152,
+      "average_rank": 11.960396,
+      "average_runtime_seconds": 713.067,
+      "average_score": 0.6397,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STAMP",
+      "task_type": "embedding",
+      "win_count": 0
+    },
+    "STAligner": {
+      "appearance_count": 94,
+      "average_peak_rss_gb": 9.991,
+      "average_rank": 15.404255,
+      "average_runtime_seconds": 253.888,
+      "average_score": 0.504601,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STAligner",
+      "task_type": "embedding",
+      "win_count": 3
+    },
+    "STG3Net": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 9.855,
+      "average_rank": 10.86,
+      "average_runtime_seconds": 279.066,
+      "average_score": 0.66467,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STG3Net",
+      "task_type": "embedding",
+      "win_count": 4
+    },
+    "SpaDo": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 18.556,
+      "average_rank": 20.071429,
+      "average_runtime_seconds": 853.065,
+      "average_score": 0.128404,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "R"
+      ],
+      "method": "SpaDo",
+      "task_type": "embedding",
+      "win_count": 1
+    },
+    "Tacos": {
+      "appearance_count": 99,
+      "average_peak_rss_gb": 2.833,
+      "average_rank": 6.575758,
+      "average_runtime_seconds": 256.713,
+      "average_score": 0.799211,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "Tacos",
+      "task_type": "embedding",
+      "win_count": 6
+    },
+    "spCLUE": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 8.269,
+      "average_rank": 7.237624,
+      "average_runtime_seconds": 134.069,
+      "average_score": 0.775041,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "spCLUE",
+      "task_type": "embedding",
+      "win_count": 7
+    },
+    "spaVAE_batch": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 4.753,
+      "average_rank": 8.642857,
+      "average_runtime_seconds": 845.23,
+      "average_score": 0.704318,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "spaVAE_batch",
+      "task_type": "embedding",
+      "win_count": 10
+    },
+    "spatiAlign": {
+      "appearance_count": 97,
+      "average_peak_rss_gb": 4.755,
+      "average_rank": 10.391753,
+      "average_runtime_seconds": 147.012,
+      "average_score": 0.68955,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "spatiAlign",
+      "task_type": "embedding",
+      "win_count": 5
+    },
+    "stClinic": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 8.196,
+      "average_rank": 13.867347,
+      "average_runtime_seconds": 603.86,
+      "average_score": 0.550733,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "stClinic",
+      "task_type": "embedding",
+      "win_count": 3
+    },
+    "stMSA": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 3.739,
+      "average_rank": 9.132653,
+      "average_runtime_seconds": 156.699,
+      "average_score": 0.723878,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "stMSA",
+      "task_type": "embedding",
+      "win_count": 2
+    }
+  },
+  "mapping": {
+    "CAST": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 4.199,
+      "average_rank": 5.742574,
+      "average_runtime_seconds": 88.997,
+      "average_score": 0.730397,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "CAST",
+      "task_type": "mapping",
+      "win_count": 15
+    },
+    "GPSA": {
+      "appearance_count": 99,
+      "average_peak_rss_gb": 2.251,
+      "average_rank": 12.757576,
+      "average_runtime_seconds": 472.632,
+      "average_score": 0.410862,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "GPSA",
+      "task_type": "mapping",
+      "win_count": 0
+    },
+    "INSPIRE": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 7.812,
+      "average_rank": 9.445545,
+      "average_runtime_seconds": 82.568,
+      "average_score": 0.615346,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "INSPIRE",
+      "task_type": "mapping",
+      "win_count": 1
+    },
+    "PASTE": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 3.31,
+      "average_rank": 8.326531,
+      "average_runtime_seconds": 24.056,
+      "average_score": 0.640178,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "PASTE",
+      "task_type": "mapping",
+      "win_count": 4
+    },
+    "PASTE2": {
+      "appearance_count": 94,
+      "average_peak_rss_gb": 3.485,
+      "average_rank": 6.170213,
+      "average_runtime_seconds": 195.995,
+      "average_score": 0.761719,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "PASTE2",
+      "task_type": "mapping",
+      "win_count": 4
+    },
+    "SANTO": {
+      "appearance_count": 58,
+      "average_peak_rss_gb": 4.152,
+      "average_rank": 13.275862,
+      "average_runtime_seconds": 32.949,
+      "average_score": 0.399352,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SANTO",
+      "task_type": "mapping",
+      "win_count": 0
+    },
+    "SPACEL": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 1.284,
+      "average_rank": 5.376238,
+      "average_runtime_seconds": 399.956,
+      "average_score": 0.802888,
+      "deep_learning": true,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "SPACEL",
+      "task_type": "mapping",
+      "win_count": 21
+    },
+    "SPIRAL": {
+      "appearance_count": 84,
+      "average_peak_rss_gb": 20.453,
+      "average_rank": 8.357143,
+      "average_runtime_seconds": 2164.845,
+      "average_score": 0.752149,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SPIRAL",
+      "task_type": "mapping",
+      "win_count": 6
+    },
+    "STAligner": {
+      "appearance_count": 94,
+      "average_peak_rss_gb": 9.991,
+      "average_rank": 11.244681,
+      "average_runtime_seconds": 253.888,
+      "average_score": 0.500462,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STAligner",
+      "task_type": "mapping",
+      "win_count": 1
+    },
+    "STalign": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 1.845,
+      "average_rank": 9.1,
+      "average_runtime_seconds": 341.652,
+      "average_score": 0.575214,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "STalign",
+      "task_type": "mapping",
+      "win_count": 5
+    },
+    "STitch3D": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 3.285,
+      "average_rank": 8.633663,
+      "average_runtime_seconds": 37.628,
+      "average_score": 0.573266,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "STitch3D",
+      "task_type": "mapping",
+      "win_count": 3
+    },
+    "Spateo_NR": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 6.055,
+      "average_rank": 6.227723,
+      "average_runtime_seconds": 51.973,
+      "average_score": 0.780187,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "Spateo_NR",
+      "task_type": "mapping",
+      "win_count": 8
+    },
+    "Spateo_R": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 5.992,
+      "average_rank": 7.039604,
+      "average_runtime_seconds": 55.66,
+      "average_score": 0.748541,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "Spateo_R",
+      "task_type": "mapping",
+      "win_count": 6
+    },
+    "moscot_NR": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 2.742,
+      "average_rank": 10.76,
+      "average_runtime_seconds": 38.005,
+      "average_score": 0.599396,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "moscot_NR",
+      "task_type": "mapping",
+      "win_count": 4
+    },
+    "moscot_R": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 2.78,
+      "average_rank": 6.4,
+      "average_runtime_seconds": 37.686,
+      "average_score": 0.72173,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "moscot_R",
+      "task_type": "mapping",
+      "win_count": 16
+    },
+    "scSLAT": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 9.258,
+      "average_rank": 8.346535,
+      "average_runtime_seconds": 69.897,
+      "average_score": 0.596667,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "scSLAT",
+      "task_type": "mapping",
+      "win_count": 3
+    },
+    "stMSA": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 3.739,
+      "average_rank": 11.673469,
+      "average_runtime_seconds": 156.699,
+      "average_score": 0.410881,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "stMSA",
+      "task_type": "mapping",
+      "win_count": 4
+    }
+  },
+  "matching": {
+    "PASTE": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 3.31,
+      "average_rank": 4.744898,
+      "average_runtime_seconds": 24.056,
+      "average_score": 0.516192,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "PASTE",
+      "task_type": "matching",
+      "win_count": 25
+    },
+    "PASTE2": {
+      "appearance_count": 94,
+      "average_peak_rss_gb": 3.485,
+      "average_rank": 5.62766,
+      "average_runtime_seconds": 195.995,
+      "average_score": 0.433764,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "PASTE2",
+      "task_type": "matching",
+      "win_count": 0
+    },
+    "Spateo_NR": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 6.055,
+      "average_rank": 3.663366,
+      "average_runtime_seconds": 51.973,
+      "average_score": 0.591345,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "Spateo_NR",
+      "task_type": "matching",
+      "win_count": 5
+    },
+    "Spateo_R": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 5.992,
+      "average_rank": 4.554455,
+      "average_runtime_seconds": 55.66,
+      "average_score": 0.532577,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "Spateo_R",
+      "task_type": "matching",
+      "win_count": 10
+    },
+    "moscot_NR": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 2.742,
+      "average_rank": 3.44,
+      "average_runtime_seconds": 38.005,
+      "average_score": 0.611024,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "moscot_NR",
+      "task_type": "matching",
+      "win_count": 14
+    },
+    "moscot_R": {
+      "appearance_count": 100,
+      "average_peak_rss_gb": 2.78,
+      "average_rank": 5.23,
+      "average_runtime_seconds": 37.686,
+      "average_score": 0.477895,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "moscot_R",
+      "task_type": "matching",
+      "win_count": 3
+    },
+    "scSLAT": {
+      "appearance_count": 101,
+      "average_peak_rss_gb": 9.258,
+      "average_rank": 4.465347,
+      "average_runtime_seconds": 69.897,
+      "average_score": 0.551495,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "scSLAT",
+      "task_type": "matching",
+      "win_count": 19
+    },
+    "stMSA": {
+      "appearance_count": 98,
+      "average_peak_rss_gb": 3.739,
+      "average_rank": 3.938776,
+      "average_runtime_seconds": 156.699,
+      "average_score": 0.542337,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA H200",
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "stMSA",
+      "task_type": "matching",
+      "win_count": 25
+    }
+  },
+  "multiomics": {
+    "COSMOS": {
+      "appearance_count": 11,
+      "average_peak_rss_gb": 4.087,
+      "average_rank": 4.363636,
+      "average_runtime_seconds": 53.624,
+      "average_score": 0.362034,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "COSMOS",
+      "task_type": "multiomics",
+      "win_count": 0
+    },
+    "NicheCompass_omics": {
+      "appearance_count": 5,
+      "average_peak_rss_gb": 3.396,
+      "average_rank": 3.4,
+      "average_runtime_seconds": 639.92,
+      "average_score": 0.449564,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "NicheCompass_omics",
+      "task_type": "multiomics",
+      "win_count": 1
+    },
+    "SMOPCA": {
+      "appearance_count": 11,
+      "average_peak_rss_gb": 14.689,
+      "average_rank": 3.909091,
+      "average_runtime_seconds": 171.049,
+      "average_score": 0.382289,
+      "deep_learning": false,
+      "gpu_models": [],
+      "language": [
+        "Python"
+      ],
+      "method": "SMOPCA",
+      "task_type": "multiomics",
+      "win_count": 0
+    },
+    "SSGATE": {
+      "appearance_count": 6,
+      "average_peak_rss_gb": 69.295,
+      "average_rank": 2.0,
+      "average_runtime_seconds": 105.45,
+      "average_score": 0.75331,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SSGATE",
+      "task_type": "multiomics",
+      "win_count": 3
+    },
+    "SpatialGlue": {
+      "appearance_count": 11,
+      "average_peak_rss_gb": 2.329,
+      "average_rank": 2.0,
+      "average_runtime_seconds": 26.209,
+      "average_score": 0.73053,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "SpatialGlue",
+      "task_type": "multiomics",
+      "win_count": 5
+    },
+    "spaMGCN": {
+      "appearance_count": 11,
+      "average_peak_rss_gb": 2.776,
+      "average_rank": 3.363636,
+      "average_runtime_seconds": 43.398,
+      "average_score": 0.547455,
+      "deep_learning": true,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "spaMGCN",
+      "task_type": "multiomics",
+      "win_count": 2
+    },
+    "spaVAE_omics": {
+      "appearance_count": 4,
+      "average_peak_rss_gb": 2.653,
+      "average_rank": 2.5,
+      "average_runtime_seconds": 734.133,
+      "average_score": 0.649106,
+      "deep_learning": false,
+      "gpu_models": [
+        "NVIDIA RTX 5000 Ada Generation"
+      ],
+      "language": [
+        "Python"
+      ],
+      "method": "spaVAE_omics",
+      "task_type": "multiomics",
+      "win_count": 0
+    }
+  }
+}
