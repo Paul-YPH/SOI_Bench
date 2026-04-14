@@ -54,9 +54,7 @@ The agent works best when the user provides as many of these fields as possible:
 Example:
 
 ```text
-I need a multiomics integration method for a Human tonsil Visium Omics dataset.
-There are 2 modalities and around 4500 spots.
-Accuracy matters more than runtime, but please avoid methods that need too much memory.
+I need a multiomics integration method for a Human tonsil Visium Omics dataset. There are 2 modalities and around 4500 spots. Accuracy matters more than runtime, but please avoid methods that need too much memory.
 ```
 
 ## Notes
