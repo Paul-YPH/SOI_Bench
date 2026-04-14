@@ -59,17 +59,49 @@ class OpenAIHelper:
             profile.extra_notes.extend(parsed["extra_notes"])
         return profile
 
+    def classify_response_mode(
+        self,
+        conversation_history: list[dict[str, str]],
+        profile: UserProfile,
+        latest_user_message: str,
+        has_prior_recommendation: bool,
+    ) -> str:
+        prompt = load_prompt("classify_intent.md")
+        user_input = json.dumps(
+            {
+                "has_prior_recommendation": has_prior_recommendation,
+                "profile": profile.to_dict(),
+                "conversation_history": conversation_history[-8:],
+                "latest_user_message": latest_user_message,
+            },
+            indent=2,
+        )
+        output = self.response_text(prompt, user_input)
+        parsed = extract_json_object(output)
+        response_mode = parsed.get("response_mode")
+        allowed = {"recommendation", "follow_up_recommendation", "follow_up_qa"}
+        if response_mode not in allowed:
+            raise ValueError(f"Unexpected response_mode: {response_mode}")
+        return response_mode
+
     def generate_answer(
         self,
         conversation_history: list[dict[str, str]],
         profile: UserProfile,
         recommendation_payload: dict[str, Any],
+        response_mode: str = "recommendation",
+        latest_user_message: str | None = None,
     ) -> str:
         system_prompt = load_prompt("system.md")
-        answer_prompt = load_prompt("recommendation_answer.md")
+        answer_prompt_name = (
+            "follow_up_answer.md" if response_mode == "follow_up_qa" else "recommendation_answer.md"
+        )
+        answer_prompt = load_prompt(answer_prompt_name)
         payload = json.dumps(
             {
                 "profile": profile.to_dict(),
+                "latest_user_message": latest_user_message,
+                "response_mode": response_mode,
                 "conversation_history": conversation_history[-8:],
                 "recommendation_payload": recommendation_payload,
             },

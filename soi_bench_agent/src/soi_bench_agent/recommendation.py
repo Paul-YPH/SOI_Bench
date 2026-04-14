@@ -33,7 +33,7 @@ def canonicalize_task(value: str | None) -> str | None:
     matches: list[tuple[int, str]] = []
     for canonical, aliases in TASK_ALIASES.items():
         for alias in aliases:
-            if alias in normalized:
+            if re.search(rf"\b{re.escape(alias)}\b", normalized):
                 matches.append((len(alias), canonical))
     if not matches:
         return None
@@ -369,14 +369,21 @@ def build_follow_up_questions(profile: UserProfile, missing_fields: list[str]) -
     return "\n".join([intro, *[f"- {prompt}" for prompt in prompts]])
 
 
-def render_rule_based_answer(profile: UserProfile, result: RecommendationResult) -> str:
-    lines = [
+def render_rule_based_answer(
+    profile: UserProfile,
+    result: RecommendationResult,
+    lead_in: str | None = None,
+) -> str:
+    lines = []
+    if lead_in:
+        lines.extend([lead_in, ""])
+    lines.extend([
         "## Recommendation",
         f"Task: `{profile.task_type}`",
         f"Priority: `{profile.priority}`",
         "",
         "Top methods:",
-    ]
+    ])
     for idx, method in enumerate(result.recommended_methods, start=1):
         lines.append(
             f"{idx}. `{method['method']}` with weighted score `{method['weighted_score']}`"
