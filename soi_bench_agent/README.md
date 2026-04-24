@@ -1,8 +1,6 @@
 # SOI Bench Agent
 
-SOI Bench Agent is a multi-turn recommendation agent for spatial omics integration methods. The user only needs an `.env` file with an OpenAI API key and a default model. The agent first converts the raw benchmark outputs in `data/raw` into a clean, structured knowledge base, then matches the user's dataset profile against benchmark evidence and recommends the most suitable integration methods.
-
-It recommends methods by matching the user's dataset profile against the local SOI benchmark and uses OpenAI as the default LLM to explain the result.
+SOI Bench Agent is a multi-turn recommendation agent for spatial omics integration methods.
 
 ## Environment Setup
 
@@ -13,7 +11,7 @@ OPENAI_API_KEY=your_api_key_here
 OPENAI_MODEL=gpt-5-mini
 ```
 
-`OPENAI_MODEL` is the default generation model used for profile refinement and final recommendation writing. If `OPENAI_API_KEY` is missing, the agent still works in a rule-based fallback mode, but the intended setup is to provide both variables.
+`OPENAI_MODEL` is the default model used for the final recommendation response.
 
 ## Install With uv
 
@@ -40,6 +38,7 @@ Useful commands inside the chat session:
 The agent works best when the user provides as many of these fields as possible:
 
 - integration task: `matching`, `embedding`, `mapping`, or `multiomics`
+- integration setting, for example `cross-slice`, `one-slice multiomics`, or `cross-slice multiomics`
 - spatial technology
 - species
 - tissue
@@ -47,6 +46,7 @@ The agent works best when the user provides as many of these fields as possible:
 - number of modalities
 - approximate number of spatial locations
 - approximate number of features
+- special conditions when relevant, such as rotation, partial overlap, batch effect, non-rigid deformation, multi-slice, or cross-panel integration
 - optimization priority: accuracy, speed, memory, or balanced
 - hard runtime or memory limits
 - whether deep-learning methods should be avoided
@@ -54,11 +54,5 @@ The agent works best when the user provides as many of these fields as possible:
 Example:
 
 ```text
-I need a multiomics integration method for a Human tonsil Visium Omics dataset. There are 2 modalities and around 4500 spots. Accuracy matters more than runtime, but please avoid methods that need too much memory.
+I need a multiomics integration method for a Human tonsil Visium Omics dataset. This is one-slice multiomics with 2 modalities and around 4500 spots. Accuracy matters more than runtime, but please avoid methods that need too much memory.
 ```
-
-## Notes
-
-- OpenAI is the default LLM backend in this version.
-- The code is intentionally structured so another provider can be added later.
-- The benchmark evidence currently comes from the local files in `data/raw` only.

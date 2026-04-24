@@ -89,8 +89,38 @@ def test_profile_parser_prefers_explicit_multiomics_over_generic_integration(tmp
     assert profile.task_type == "multiomics"
 
 
+def test_profile_parser_extracts_integration_mode_and_challenge_tags(tmp_path: Path) -> None:
+    bundle = build_clean_bundle(Path("data/new_raw"), tmp_path)
+    parser = ProfileParser(bundle)
+    profile = parser.update_profile(
+        UserProfile(),
+        "I need a matching method for a Human Visium cross-slice dataset with rotation and partial overlap.",
+    )
+
+    assert profile.integration_mode == "cross-slice"
+    assert "rigid_alignment" in profile.challenge_tags
+    assert "partial_overlap" in profile.challenge_tags
+
+
 def test_canonicalize_task_does_not_treat_matched_as_matching() -> None:
     assert canonicalize_task("Introduce the matched datasets") is None
+
+
+def test_recommender_uses_simulation_challenge_tags_when_matching_new_raw(tmp_path: Path) -> None:
+    bundle = build_clean_bundle(Path("data/new_raw"), tmp_path)
+    recommender = Recommender(bundle)
+    profile = UserProfile(
+        task_type="matching",
+        integration_mode="cross-slice",
+        technology="Visium",
+        species="Human",
+        challenge_tags=["rigid_alignment"],
+    )
+
+    result = recommender.recommend(profile)
+
+    assert result.matched_datasets
+    assert any("rigid_alignment" in item["challenge_tags"] for item in result.matched_datasets[:3])
 
 
 def test_conversation_agent_adds_natural_lead_in_for_follow_up_questions(tmp_path: Path) -> None:
@@ -121,9 +151,12 @@ def test_conversation_agent_uses_content_sentence_for_memory_follow_up(tmp_path:
 
 
 def test_cli_turn_labels_are_explicit() -> None:
-    assert "Turn 3" in build_user_prompt(3)
-    assert "turn 3" in build_pending_status(3).lower()
-    assert "Turn 3" in build_assistant_title(3)
+    assert "Turn" not in build_user_prompt(3)
+    assert "turn" not in build_pending_status(3).lower()
+    assert "Turn" not in build_assistant_title(3)
+    assert "You:" in build_user_prompt(3)
+    assert "Assistant is working" in build_pending_status(3)
+    assert "Assistant" in build_assistant_title(3)
     assert "Reply complete in 2.5s" in build_assistant_subtitle(2.5)
 
 

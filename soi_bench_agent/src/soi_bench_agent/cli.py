@@ -11,7 +11,7 @@ from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.rule import Rule
 
-from .config import load_settings
+from .config import Settings, load_settings
 from .data_cleaning import build_clean_bundle
 from .knowledge_base import load_knowledge_base
 from .llm import OpenAIHelper
@@ -457,18 +457,18 @@ def render_welcome(console: Console) -> None:
 
 
 def build_user_prompt(turn_id: int) -> str:
-    return f"[bold blue]You · Turn {turn_id}:[/bold blue] "
+    return "[bold blue]You:[/bold blue] "
 
 
 def build_pending_status(turn_id: int) -> str:
     return (
-        f"[bold yellow]Assistant is working on turn {turn_id}...[/bold yellow] "
+        "[bold yellow]Assistant is working...[/bold yellow] "
         "[dim]Wait for the completed reply panel before entering the next command.[/dim]"
     )
 
 
 def build_assistant_title(turn_id: int) -> str:
-    return f"[bold green]Assistant · Turn {turn_id}[/bold green]"
+    return "[bold green]Assistant[/bold green]"
 
 
 def build_assistant_subtitle(elapsed_seconds: float) -> str:
@@ -520,9 +520,9 @@ def run_build_data(raw_dir: Path, clean_dir: Path) -> None:
     print(f"Built clean benchmark artifacts in {clean_dir}")
 
 
-def run_chat(raw_dir: Path, clean_dir: Path) -> None:
-    settings = load_settings()
-    knowledge_base = load_knowledge_base(clean_dir, raw_dir)
+def run_chat(clean_dir: Path, settings: Settings | None = None) -> None:
+    settings = settings or load_settings()
+    knowledge_base = load_knowledge_base(clean_dir)
     llm = OpenAIHelper(settings.openai_api_key, settings.openai_model) if settings.api_enabled else None
     agent = ConversationAgent(knowledge_base, llm=llm)
     console = Console()
@@ -558,15 +558,16 @@ def run_chat(raw_dir: Path, clean_dir: Path) -> None:
 
 
 def main() -> None:
+    settings = load_settings()
     args = build_parser().parse_args()
-    raw_dir = Path("data/raw")
-    clean_dir = Path("data/clean")
+    raw_dir = Path(settings.data_dir)
+    clean_dir = Path(settings.clean_dir)
 
     if args.command == "build-data":
         run_build_data(raw_dir, clean_dir)
         return
 
-    run_chat(raw_dir, clean_dir)
+    run_chat(clean_dir, settings=settings)
 
 
 if __name__ == "__main__":

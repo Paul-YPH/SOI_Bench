@@ -3,9 +3,9 @@
     "BANKSY": {
       "appearance_count": 101,
       "average_peak_rss_gb": 10.51,
-      "average_rank": 9.762376,
+      "average_rank": 9.722772,
       "average_runtime_seconds": 194.021,
-      "average_score": 0.713803,
+      "average_score": 0.717787,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -18,9 +18,9 @@
     "CellCharter": {
       "appearance_count": 101,
       "average_peak_rss_gb": 2.59,
-      "average_rank": 6.742574,
+      "average_rank": 6.782178,
       "average_runtime_seconds": 166.789,
-      "average_score": 0.771344,
+      "average_score": 0.773671,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -36,9 +36,9 @@
     "DeepST": {
       "appearance_count": 96,
       "average_peak_rss_gb": 10.667,
-      "average_rank": 7.135417,
+      "average_rank": 7.010417,
       "average_runtime_seconds": 241.967,
-      "average_score": 0.753177,
+      "average_score": 0.758245,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -54,9 +54,9 @@
     "GraphST": {
       "appearance_count": 99,
       "average_peak_rss_gb": 15.214,
-      "average_rank": 11.717172,
+      "average_rank": 11.89899,
       "average_runtime_seconds": 95.606,
-      "average_score": 0.644502,
+      "average_score": 0.643962,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -72,42 +72,39 @@
     "INSPIRE": {
       "appearance_count": 101,
       "average_peak_rss_gb": 7.812,
-      "average_rank": 14.514851,
+      "average_rank": 14.712871,
       "average_runtime_seconds": 82.568,
-      "average_score": 0.532757,
-      "deep_learning": false,
+      "average_score": 0.531365,
+      "deep_learning": true,
       "gpu_models": [],
       "language": [
         "Python"
       ],
       "method": "INSPIRE",
       "task_type": "embedding",
-      "win_count": 1
+      "win_count": 0
     },
-    "NicheCompass_batch": {
+    "NicheCompass": {
       "appearance_count": 100,
-      "average_peak_rss_gb": 5.393,
-      "average_rank": 13.56,
-      "average_runtime_seconds": 747.098,
-      "average_score": 0.552887,
+      "average_peak_rss_gb": null,
+      "average_rank": 13.39,
+      "average_runtime_seconds": null,
+      "average_score": 0.559361,
       "deep_learning": true,
-      "gpu_models": [
-        "NVIDIA H200",
-        "NVIDIA RTX 5000 Ada Generation"
-      ],
+      "gpu_models": [],
       "language": [
         "Python"
       ],
-      "method": "NicheCompass_batch",
+      "method": "NicheCompass",
       "task_type": "embedding",
       "win_count": 5
     },
     "PRECAST": {
       "appearance_count": 101,
       "average_peak_rss_gb": 10.731,
-      "average_rank": 8.326733,
+      "average_rank": 8.683168,
       "average_runtime_seconds": 315.451,
-      "average_score": 0.711507,
+      "average_score": 0.705415,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -115,14 +112,14 @@
       ],
       "method": "PRECAST",
       "task_type": "embedding",
-      "win_count": 9
+      "win_count": 8
     },
     "SEDR": {
       "appearance_count": 100,
       "average_peak_rss_gb": 4.433,
-      "average_rank": 12.06,
+      "average_rank": 12.11,
       "average_runtime_seconds": 55.068,
-      "average_score": 0.610971,
+      "average_score": 0.612284,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -136,11 +133,11 @@
       "win_count": 4
     },
     "SPIRAL": {
-      "appearance_count": 84,
-      "average_peak_rss_gb": 20.453,
-      "average_rank": 10.845238,
-      "average_runtime_seconds": 2164.845,
-      "average_score": 0.695444,
+      "appearance_count": 89,
+      "average_peak_rss_gb": 20.901,
+      "average_rank": 10.853933,
+      "average_runtime_seconds": 2151.787,
+      "average_score": 0.689587,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -155,9 +152,9 @@
     "STADIA": {
       "appearance_count": 95,
       "average_peak_rss_gb": 13.564,
-      "average_rank": 13.631579,
+      "average_rank": 14.010526,
       "average_runtime_seconds": 198.48,
-      "average_score": 0.580461,
+      "average_score": 0.574047,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -170,9 +167,9 @@
     "STAGATE": {
       "appearance_count": 101,
       "average_peak_rss_gb": 2.419,
-      "average_rank": 4.851485,
+      "average_rank": 4.792079,
       "average_runtime_seconds": 79.452,
-      "average_score": 0.823307,
+      "average_score": 0.826971,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -183,14 +180,14 @@
       ],
       "method": "STAGATE",
       "task_type": "embedding",
-      "win_count": 21
+      "win_count": 22
     },
     "STAMP": {
       "appearance_count": 101,
       "average_peak_rss_gb": 3.152,
       "average_rank": 11.960396,
       "average_runtime_seconds": 713.067,
-      "average_score": 0.6397,
+      "average_score": 0.640557,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -204,11 +201,11 @@
       "win_count": 0
     },
     "STAligner": {
-      "appearance_count": 94,
-      "average_peak_rss_gb": 9.991,
-      "average_rank": 15.404255,
-      "average_runtime_seconds": 253.888,
-      "average_score": 0.504601,
+      "appearance_count": 98,
+      "average_peak_rss_gb": 9.764,
+      "average_rank": 15.755102,
+      "average_runtime_seconds": 251.546,
+      "average_score": 0.49591,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -219,14 +216,14 @@
       ],
       "method": "STAligner",
       "task_type": "embedding",
-      "win_count": 3
+      "win_count": 2
     },
     "STG3Net": {
       "appearance_count": 100,
       "average_peak_rss_gb": 9.855,
-      "average_rank": 10.86,
+      "average_rank": 10.7,
       "average_runtime_seconds": 279.066,
-      "average_score": 0.66467,
+      "average_score": 0.670084,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -242,9 +239,9 @@
     "SpaDo": {
       "appearance_count": 98,
       "average_peak_rss_gb": 18.556,
-      "average_rank": 20.071429,
+      "average_rank": 20.173469,
       "average_runtime_seconds": 853.065,
-      "average_score": 0.128404,
+      "average_score": 0.126078,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -257,9 +254,9 @@
     "Tacos": {
       "appearance_count": 99,
       "average_peak_rss_gb": 2.833,
-      "average_rank": 6.575758,
+      "average_rank": 6.494949,
       "average_runtime_seconds": 256.713,
-      "average_score": 0.799211,
+      "average_score": 0.802037,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -275,9 +272,9 @@
     "spCLUE": {
       "appearance_count": 101,
       "average_peak_rss_gb": 8.269,
-      "average_rank": 7.237624,
+      "average_rank": 7.069307,
       "average_runtime_seconds": 134.069,
-      "average_score": 0.775041,
+      "average_score": 0.780358,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -290,30 +287,27 @@
       "task_type": "embedding",
       "win_count": 7
     },
-    "spaVAE_batch": {
+    "spaVAE": {
       "appearance_count": 98,
-      "average_peak_rss_gb": 4.753,
-      "average_rank": 8.642857,
-      "average_runtime_seconds": 845.23,
-      "average_score": 0.704318,
+      "average_peak_rss_gb": null,
+      "average_rank": 8.714286,
+      "average_runtime_seconds": null,
+      "average_score": 0.705078,
       "deep_learning": true,
-      "gpu_models": [
-        "NVIDIA H200",
-        "NVIDIA RTX 5000 Ada Generation"
-      ],
+      "gpu_models": [],
       "language": [
         "Python"
       ],
-      "method": "spaVAE_batch",
+      "method": "spaVAE",
       "task_type": "embedding",
       "win_count": 10
     },
     "spatiAlign": {
       "appearance_count": 97,
       "average_peak_rss_gb": 4.755,
-      "average_rank": 10.391753,
+      "average_rank": 10.402062,
       "average_runtime_seconds": 147.012,
-      "average_score": 0.68955,
+      "average_score": 0.691816,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -329,9 +323,9 @@
     "stClinic": {
       "appearance_count": 98,
       "average_peak_rss_gb": 8.196,
-      "average_rank": 13.867347,
+      "average_rank": 13.673469,
       "average_runtime_seconds": 603.86,
-      "average_score": 0.550733,
+      "average_score": 0.557117,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -342,14 +336,14 @@
       ],
       "method": "stClinic",
       "task_type": "embedding",
-      "win_count": 3
+      "win_count": 5
     },
     "stMSA": {
       "appearance_count": 98,
       "average_peak_rss_gb": 3.739,
-      "average_rank": 9.132653,
+      "average_rank": 9.071429,
       "average_runtime_seconds": 156.699,
-      "average_score": 0.723878,
+      "average_score": 0.728591,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -365,11 +359,11 @@
   },
   "mapping": {
     "CAST": {
-      "appearance_count": 101,
-      "average_peak_rss_gb": 4.199,
-      "average_rank": 5.742574,
-      "average_runtime_seconds": 88.997,
-      "average_score": 0.730397,
+      "appearance_count": 92,
+      "average_peak_rss_gb": 3.925,
+      "average_rank": 5.478261,
+      "average_runtime_seconds": 85.649,
+      "average_score": 0.744029,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -380,15 +374,15 @@
       ],
       "method": "CAST",
       "task_type": "mapping",
-      "win_count": 15
+      "win_count": 13
     },
     "GPSA": {
-      "appearance_count": 99,
-      "average_peak_rss_gb": 2.251,
-      "average_rank": 12.757576,
-      "average_runtime_seconds": 472.632,
-      "average_score": 0.410862,
-      "deep_learning": true,
+      "appearance_count": 98,
+      "average_peak_rss_gb": 2.263,
+      "average_rank": 12.561224,
+      "average_runtime_seconds": 474.712,
+      "average_score": 0.422986,
+      "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
         "NVIDIA RTX 5000 Ada Generation"
@@ -403,10 +397,10 @@
     "INSPIRE": {
       "appearance_count": 101,
       "average_peak_rss_gb": 7.812,
-      "average_rank": 9.445545,
+      "average_rank": 9.366337,
       "average_runtime_seconds": 82.568,
-      "average_score": 0.615346,
-      "deep_learning": false,
+      "average_score": 0.625332,
+      "deep_learning": true,
       "gpu_models": [],
       "language": [
         "Python"
@@ -418,9 +412,9 @@
     "PASTE": {
       "appearance_count": 98,
       "average_peak_rss_gb": 3.31,
-      "average_rank": 8.326531,
+      "average_rank": 8.102041,
       "average_runtime_seconds": 24.056,
-      "average_score": 0.640178,
+      "average_score": 0.662269,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -436,9 +430,9 @@
     "PASTE2": {
       "appearance_count": 94,
       "average_peak_rss_gb": 3.485,
-      "average_rank": 6.170213,
+      "average_rank": 6.06383,
       "average_runtime_seconds": 195.995,
-      "average_score": 0.761719,
+      "average_score": 0.774644,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -451,9 +445,9 @@
     "SANTO": {
       "appearance_count": 58,
       "average_peak_rss_gb": 4.152,
-      "average_rank": 13.275862,
+      "average_rank": 13.293103,
       "average_runtime_seconds": 32.949,
-      "average_score": 0.399352,
+      "average_score": 0.39462,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -469,24 +463,24 @@
     "SPACEL": {
       "appearance_count": 101,
       "average_peak_rss_gb": 1.284,
-      "average_rank": 5.376238,
+      "average_rank": 5.356436,
       "average_runtime_seconds": 399.956,
-      "average_score": 0.802888,
-      "deep_learning": true,
+      "average_score": 0.82152,
+      "deep_learning": false,
       "gpu_models": [],
       "language": [
         "Python"
       ],
       "method": "SPACEL",
       "task_type": "mapping",
-      "win_count": 21
+      "win_count": 20
     },
     "SPIRAL": {
       "appearance_count": 84,
       "average_peak_rss_gb": 20.453,
-      "average_rank": 8.357143,
+      "average_rank": 8.428571,
       "average_runtime_seconds": 2164.845,
-      "average_score": 0.752149,
+      "average_score": 0.747947,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -496,14 +490,14 @@
       ],
       "method": "SPIRAL",
       "task_type": "mapping",
-      "win_count": 6
+      "win_count": 7
     },
     "STAligner": {
       "appearance_count": 94,
       "average_peak_rss_gb": 9.991,
-      "average_rank": 11.244681,
+      "average_rank": 11.212766,
       "average_runtime_seconds": 253.888,
-      "average_score": 0.500462,
+      "average_score": 0.49744,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -517,12 +511,12 @@
       "win_count": 1
     },
     "STalign": {
-      "appearance_count": 100,
-      "average_peak_rss_gb": 1.845,
-      "average_rank": 9.1,
-      "average_runtime_seconds": 341.652,
-      "average_score": 0.575214,
-      "deep_learning": true,
+      "appearance_count": 94,
+      "average_peak_rss_gb": 1.899,
+      "average_rank": 8.56383,
+      "average_runtime_seconds": 352.515,
+      "average_score": 0.604015,
+      "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
         "NVIDIA RTX 5000 Ada Generation"
@@ -532,14 +526,14 @@
       ],
       "method": "STalign",
       "task_type": "mapping",
-      "win_count": 5
+      "win_count": 6
     },
     "STitch3D": {
       "appearance_count": 101,
       "average_peak_rss_gb": 3.285,
-      "average_rank": 8.633663,
+      "average_rank": 8.643564,
       "average_runtime_seconds": 37.628,
-      "average_score": 0.573266,
+      "average_score": 0.583733,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -552,9 +546,9 @@
     "Spateo_NR": {
       "appearance_count": 101,
       "average_peak_rss_gb": 6.055,
-      "average_rank": 6.227723,
+      "average_rank": 6.188119,
       "average_runtime_seconds": 51.973,
-      "average_score": 0.780187,
+      "average_score": 0.794983,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -565,14 +559,14 @@
       ],
       "method": "Spateo_NR",
       "task_type": "mapping",
-      "win_count": 8
+      "win_count": 10
     },
     "Spateo_R": {
       "appearance_count": 101,
       "average_peak_rss_gb": 5.992,
-      "average_rank": 7.039604,
+      "average_rank": 6.950495,
       "average_runtime_seconds": 55.66,
-      "average_score": 0.748541,
+      "average_score": 0.765772,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -586,11 +580,11 @@
       "win_count": 6
     },
     "moscot_NR": {
-      "appearance_count": 100,
-      "average_peak_rss_gb": 2.742,
-      "average_rank": 10.76,
-      "average_runtime_seconds": 38.005,
-      "average_score": 0.599396,
+      "appearance_count": 94,
+      "average_peak_rss_gb": 2.684,
+      "average_rank": 10.765957,
+      "average_runtime_seconds": 38.333,
+      "average_score": 0.62683,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -606,9 +600,9 @@
     "moscot_R": {
       "appearance_count": 100,
       "average_peak_rss_gb": 2.78,
-      "average_rank": 6.4,
+      "average_rank": 6.28,
       "average_runtime_seconds": 37.686,
-      "average_score": 0.72173,
+      "average_score": 0.736409,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -624,9 +618,9 @@
     "scSLAT": {
       "appearance_count": 101,
       "average_peak_rss_gb": 9.258,
-      "average_rank": 8.346535,
+      "average_rank": 8.306931,
       "average_runtime_seconds": 69.897,
-      "average_score": 0.596667,
+      "average_score": 0.606388,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -637,14 +631,14 @@
       ],
       "method": "scSLAT",
       "task_type": "mapping",
-      "win_count": 3
+      "win_count": 2
     },
     "stMSA": {
       "appearance_count": 98,
       "average_peak_rss_gb": 3.739,
-      "average_rank": 11.673469,
+      "average_rank": 11.714286,
       "average_runtime_seconds": 156.699,
-      "average_score": 0.410881,
+      "average_score": 0.405492,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -662,9 +656,9 @@
     "PASTE": {
       "appearance_count": 98,
       "average_peak_rss_gb": 3.31,
-      "average_rank": 4.744898,
+      "average_rank": 4.693878,
       "average_runtime_seconds": 24.056,
-      "average_score": 0.516192,
+      "average_score": 0.516728,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -680,9 +674,9 @@
     "PASTE2": {
       "appearance_count": 94,
       "average_peak_rss_gb": 3.485,
-      "average_rank": 5.62766,
+      "average_rank": 5.702128,
       "average_runtime_seconds": 195.995,
-      "average_score": 0.433764,
+      "average_score": 0.431923,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -695,9 +689,9 @@
     "Spateo_NR": {
       "appearance_count": 101,
       "average_peak_rss_gb": 6.055,
-      "average_rank": 3.663366,
+      "average_rank": 3.574257,
       "average_runtime_seconds": 51.973,
-      "average_score": 0.591345,
+      "average_score": 0.599544,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -708,14 +702,14 @@
       ],
       "method": "Spateo_NR",
       "task_type": "matching",
-      "win_count": 5
+      "win_count": 6
     },
     "Spateo_R": {
       "appearance_count": 101,
       "average_peak_rss_gb": 5.992,
-      "average_rank": 4.554455,
+      "average_rank": 4.435644,
       "average_runtime_seconds": 55.66,
-      "average_score": 0.532577,
+      "average_score": 0.543918,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -729,11 +723,11 @@
       "win_count": 10
     },
     "moscot_NR": {
-      "appearance_count": 100,
-      "average_peak_rss_gb": 2.742,
-      "average_rank": 3.44,
-      "average_runtime_seconds": 38.005,
-      "average_score": 0.611024,
+      "appearance_count": 94,
+      "average_peak_rss_gb": 2.684,
+      "average_rank": 3.5,
+      "average_runtime_seconds": 38.333,
+      "average_score": 0.611211,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -744,14 +738,14 @@
       ],
       "method": "moscot_NR",
       "task_type": "matching",
-      "win_count": 14
+      "win_count": 9
     },
     "moscot_R": {
       "appearance_count": 100,
       "average_peak_rss_gb": 2.78,
-      "average_rank": 5.23,
+      "average_rank": 5.2,
       "average_runtime_seconds": 37.686,
-      "average_score": 0.477895,
+      "average_score": 0.48387,
       "deep_learning": false,
       "gpu_models": [
         "NVIDIA H200",
@@ -762,14 +756,14 @@
       ],
       "method": "moscot_R",
       "task_type": "matching",
-      "win_count": 3
+      "win_count": 4
     },
     "scSLAT": {
       "appearance_count": 101,
       "average_peak_rss_gb": 9.258,
-      "average_rank": 4.465347,
+      "average_rank": 4.49505,
       "average_runtime_seconds": 69.897,
-      "average_score": 0.551495,
+      "average_score": 0.547241,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -785,9 +779,9 @@
     "stMSA": {
       "appearance_count": 98,
       "average_peak_rss_gb": 3.739,
-      "average_rank": 3.938776,
+      "average_rank": 3.816327,
       "average_runtime_seconds": 156.699,
-      "average_score": 0.542337,
+      "average_score": 0.561146,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA H200",
@@ -798,16 +792,16 @@
       ],
       "method": "stMSA",
       "task_type": "matching",
-      "win_count": 25
+      "win_count": 28
     }
   },
   "multiomics": {
     "COSMOS": {
       "appearance_count": 11,
       "average_peak_rss_gb": 4.087,
-      "average_rank": 4.363636,
+      "average_rank": 4.0,
       "average_runtime_seconds": 53.624,
-      "average_score": 0.362034,
+      "average_score": 0.471641,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -819,20 +813,18 @@
       "task_type": "multiomics",
       "win_count": 0
     },
-    "NicheCompass_omics": {
+    "NicheCompass": {
       "appearance_count": 5,
-      "average_peak_rss_gb": 3.396,
-      "average_rank": 3.4,
-      "average_runtime_seconds": 639.92,
-      "average_score": 0.449564,
-      "deep_learning": false,
-      "gpu_models": [
-        "NVIDIA RTX 5000 Ada Generation"
-      ],
+      "average_peak_rss_gb": null,
+      "average_rank": 3.0,
+      "average_runtime_seconds": null,
+      "average_score": 0.493383,
+      "deep_learning": true,
+      "gpu_models": [],
       "language": [
         "Python"
       ],
-      "method": "NicheCompass_omics",
+      "method": "NicheCompass",
       "task_type": "multiomics",
       "win_count": 1
     },
@@ -841,7 +833,7 @@
       "average_peak_rss_gb": 14.689,
       "average_rank": 3.909091,
       "average_runtime_seconds": 171.049,
-      "average_score": 0.382289,
+      "average_score": 0.413642,
       "deep_learning": false,
       "gpu_models": [],
       "language": [
@@ -854,9 +846,9 @@
     "SSGATE": {
       "appearance_count": 6,
       "average_peak_rss_gb": 69.295,
-      "average_rank": 2.0,
+      "average_rank": 2.333333,
       "average_runtime_seconds": 105.45,
-      "average_score": 0.75331,
+      "average_score": 0.642631,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -871,9 +863,9 @@
     "SpatialGlue": {
       "appearance_count": 11,
       "average_peak_rss_gb": 2.329,
-      "average_rank": 2.0,
+      "average_rank": 2.181818,
       "average_runtime_seconds": 26.209,
-      "average_score": 0.73053,
+      "average_score": 0.706185,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -883,14 +875,14 @@
       ],
       "method": "SpatialGlue",
       "task_type": "multiomics",
-      "win_count": 5
+      "win_count": 4
     },
     "spaMGCN": {
       "appearance_count": 11,
       "average_peak_rss_gb": 2.776,
-      "average_rank": 3.363636,
+      "average_rank": 3.727273,
       "average_runtime_seconds": 43.398,
-      "average_score": 0.547455,
+      "average_score": 0.460898,
       "deep_learning": true,
       "gpu_models": [
         "NVIDIA RTX 5000 Ada Generation"
@@ -902,22 +894,20 @@
       "task_type": "multiomics",
       "win_count": 2
     },
-    "spaVAE_omics": {
+    "spaVAE": {
       "appearance_count": 4,
-      "average_peak_rss_gb": 2.653,
-      "average_rank": 2.5,
-      "average_runtime_seconds": 734.133,
-      "average_score": 0.649106,
-      "deep_learning": false,
-      "gpu_models": [
-        "NVIDIA RTX 5000 Ada Generation"
-      ],
+      "average_peak_rss_gb": null,
+      "average_rank": 2.0,
+      "average_runtime_seconds": null,
+      "average_score": 0.652857,
+      "deep_learning": true,
+      "gpu_models": [],
       "language": [
         "Python"
       ],
-      "method": "spaVAE_omics",
+      "method": "spaVAE",
       "task_type": "multiomics",
-      "win_count": 0
+      "win_count": 1
     }
   }
 }

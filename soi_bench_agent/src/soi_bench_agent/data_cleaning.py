@@ -69,19 +69,100 @@ def read_csv_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def _read_optional_csv_rows(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    return read_csv_rows(path)
+
+
+def _truthy_csv_flag(value: str | None) -> bool:
+    return (value or "").strip().upper() == "TRUE"
+
+
+def _extract_numeric_suffix(dataset_id: str) -> int | None:
+    match = re.search(r"(\d+)$", dataset_id)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def infer_simulation_tags(dataset_id: str, dataset_rows: list[dict[str, str]]) -> list[str]:
+    tags: list[str] = []
+    first_row = dataset_rows[0] if dataset_rows else {}
+    if any(_truthy_csv_flag(row.get("multi_slice")) for row in dataset_rows):
+        tags.append("multi_slice")
+    if any(_truthy_csv_flag(row.get("rotation")) for row in dataset_rows):
+        tags.append("rigid_alignment")
+    if any(_truthy_csv_flag(row.get("distortion")) for row in dataset_rows):
+        tags.append("non_rigid_deformation")
+    if any(_truthy_csv_flag(row.get("overlap")) for row in dataset_rows):
+        tags.append("partial_overlap")
+    if any(_truthy_csv_flag(row.get("pseudocount")) for row in dataset_rows):
+        tags.append("batch_effect")
+
+    dataset_number = _extract_numeric_suffix(dataset_id)
+    if dataset_number is not None:
+        if 1 <= dataset_number <= 6:
+            tags.append("scale_variation")
+        elif 7 <= dataset_number <= 13:
+            tags.append("gene_coverage_variation")
+        elif 44 <= dataset_number <= 55:
+            tags.append("statistical_simulation")
+        elif 56 <= dataset_number <= 60:
+            tags.append("cross_panel_integration")
+
+    if first_row.get("technology") == "MERFISH" and "cross_panel_integration" not in tags:
+        tags.append("cross_panel_integration")
+    return sorted(set(tags))
+
+
+def _build_default_profile(dataset_id: str) -> dict:
+    origin = infer_origin(dataset_id)
+    return {
+        "dataset_id": dataset_id,
+        "origin": origin,
+        "technology": "Simulation" if origin == "simulation" else None,
+        "technology_list": ["Simulation"] if origin == "simulation" else [],
+        "species": None,
+        "tissue": None,
+        "integration_mode": None,
+        "challenge_tags": [],
+        "sample_count": None,
+        "modality_count": None,
+        "num_locations": summarize_numbers([]),
+        "num_features": summarize_numbers([]),
+    }
+
+
 def build_dataset_profiles(raw_dir: Path) -> dict[str, dict]:
     profiles: dict[str, dict] = {}
-    rows = read_csv_rows(raw_dir / "data_info.csv")
-    grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for row in rows:
-        grouped[row["data_id"]].append(row)
+    experiment_rows = _read_optional_csv_rows(raw_dir / "data_info_experiment.csv")
+    simulation_rows = _read_optional_csv_rows(raw_dir / "data_info_simulation.csv")
+    if not experiment_rows:
+        experiment_rows = [
+            row
+            for row in read_csv_rows(raw_dir / "data_info.csv")
+            if not row["data_id"].startswith("SD")
+        ]
 
-    for dataset_id, dataset_rows in grouped.items():
+    grouped_experiment_rows: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in experiment_rows:
+        grouped_experiment_rows[row["data_id"]].append(row)
+
+    for dataset_id, dataset_rows in grouped_experiment_rows.items():
         locations = [int(row["num_locations"]) for row in dataset_rows]
         features = [int(row["num_features"]) for row in dataset_rows]
         technologies = sorted({row["technology"] for row in dataset_rows})
         species = sorted({row["species"] for row in dataset_rows})
         tissues = sorted({row["tissue"] for row in dataset_rows})
+        integration_modes = sorted({row.get("integration") for row in dataset_rows if row.get("integration")})
+        integration_mode = integration_modes[0] if len(integration_modes) == 1 else None
+        sample_count = len(dataset_rows)
+        modality_count = len(dataset_rows)
+        if integration_mode == "cross-slice":
+            modality_count = 1
+        elif integration_mode == "multiomics_one_slice":
+            sample_count = 1
         profiles[dataset_id] = {
             "dataset_id": dataset_id,
             "origin": "experiment",
@@ -89,8 +170,34 @@ def build_dataset_profiles(raw_dir: Path) -> dict[str, dict]:
             "technology_list": technologies,
             "species": species[0] if len(species) == 1 else "/".join(species),
             "tissue": tissues[0] if len(tissues) == 1 else "/".join(tissues),
+            "integration_mode": integration_mode,
+            "challenge_tags": [],
+            "sample_count": sample_count,
+            "modality_count": modality_count,
+            "num_locations": summarize_numbers(locations),
+            "num_features": summarize_numbers(features),
+        }
+
+    grouped_simulation_rows: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in simulation_rows:
+        grouped_simulation_rows[row["data_id"]].append(row)
+
+    for dataset_id, dataset_rows in grouped_simulation_rows.items():
+        locations = [int(row["num_locations"]) for row in dataset_rows]
+        features = [int(row["num_features"]) for row in dataset_rows]
+        technologies = sorted({row["technology"] for row in dataset_rows if row.get("technology")})
+        species = sorted({row["species"] for row in dataset_rows if row.get("species")})
+        profiles[dataset_id] = {
+            "dataset_id": dataset_id,
+            "origin": "simulation",
+            "technology": technologies[0] if len(technologies) == 1 else "/".join(technologies),
+            "technology_list": technologies,
+            "species": species[0] if len(species) == 1 else "/".join(species),
+            "tissue": None,
+            "integration_mode": "cross-slice",
+            "challenge_tags": infer_simulation_tags(dataset_id, dataset_rows),
             "sample_count": len(dataset_rows),
-            "modality_count": len(dataset_rows),
+            "modality_count": 1,
             "num_locations": summarize_numbers(locations),
             "num_features": summarize_numbers(features),
         }
@@ -114,6 +221,8 @@ def build_resource_index(raw_dir: Path) -> dict[tuple[str, str], dict]:
     for origins, file_list in TRACE_FILES.items():
         for rel_path in file_list:
             path = raw_dir / rel_path
+            if not path.exists():
+                continue
             for row in read_csv_rows(path):
                 key = (row["dataset"], row["tool"])
                 grouped[key]["runtime_seconds"].append(parse_duration_to_seconds(row.get("realtime")))
@@ -123,9 +232,17 @@ def build_resource_index(raw_dir: Path) -> dict[tuple[str, str], dict]:
     for origins, file_list in GPU_FILES.items():
         for rel_path in file_list:
             path = raw_dir / rel_path
+            if not path.exists():
+                continue
             for row in read_csv_rows(path):
                 key = (row["dataset"], row["tool"])
                 grouped[key]["gpu_models"].add(row["gpu_model"])
+
+    all_gpu_usage_path = raw_dir / "summary" / "all_gpu_usage_summary.csv"
+    if all_gpu_usage_path.exists():
+        for row in read_csv_rows(all_gpu_usage_path):
+            key = (row["dataset"], row["tool"])
+            grouped[key]["gpu_models"].add(row["gpu_model"])
 
     resource_index: dict[tuple[str, str], dict] = {}
     for key, values in grouped.items():
@@ -144,6 +261,7 @@ def build_resource_index(raw_dir: Path) -> dict[tuple[str, str], dict]:
 
 def extract_result_entries(raw_dir: Path, dataset_profiles: dict[str, dict], resource_index: dict[tuple[str, str], dict]) -> list[dict]:
     entries: list[dict] = []
+    selected_paths: dict[str, Path] = {}
     result_dirs = [raw_dir / "experiment_results", raw_dir / "simulation_results"]
     for result_dir in result_dirs:
         for path in sorted(result_dir.glob("*.csv")):
@@ -157,54 +275,55 @@ def extract_result_entries(raw_dir: Path, dataset_profiles: dict[str, dict], res
                     break
             if task_type is None or dataset_id is None:
                 continue
+            preferred_dir = "simulation_results" if dataset_id.startswith("SD") else "experiment_results"
+            if path.name not in selected_paths or path.parent.name == preferred_dir:
+                selected_paths[path.name] = path
 
-            rows = read_csv_rows(path)
-            valid_rows = []
-            for row in rows:
-                score_overall = maybe_float(row.get("Score overall"))
-                if score_overall is None:
-                    continue
-                copied = dict(row)
-                copied["Score overall"] = str(score_overall)
-                valid_rows.append(copied)
+    for path in sorted(selected_paths.values()):
+        task_type = None
+        dataset_id = None
+        for candidate_task, pattern in RESULT_PATTERNS.items():
+            match = pattern.match(path.name)
+            if match:
+                task_type = candidate_task
+                dataset_id = match.group("dataset")
+                break
+        if task_type is None or dataset_id is None:
+            continue
 
-            ranked_rows = sorted(valid_rows, key=lambda row: float(row["Score overall"]), reverse=True)
-            for rank, row in enumerate(ranked_rows, start=1):
-                method = row["Method"]
-                resource = resource_index.get((dataset_id, method), {})
-                metrics = {
-                    slugify(key): maybe_float(value)
-                    for key, value in row.items()
-                    if key not in {"Method", "Language", "Deep Learning"}
-                }
-                entry = {
-                    "dataset_id": dataset_id,
-                    "origin": infer_origin(dataset_id),
-                    "task_type": task_type,
-                    "method": method,
-                    "language": row["Language"],
-                    "deep_learning": row["Deep Learning"] == "dl_yes",
-                    "score_overall": float(row["Score overall"]),
-                    "rank": rank,
-                    "metrics": metrics,
-                    "resource": resource,
-                    "dataset_profile": dataset_profiles.get(
-                        dataset_id,
-                        {
-                            "dataset_id": dataset_id,
-                            "origin": infer_origin(dataset_id),
-                            "technology": "Simulation",
-                            "technology_list": ["Simulation"],
-                            "species": None,
-                            "tissue": None,
-                            "sample_count": None,
-                            "modality_count": None,
-                            "num_locations": summarize_numbers([]),
-                            "num_features": summarize_numbers([]),
-                        },
-                    ),
-                }
-                entries.append(entry)
+        rows = read_csv_rows(path)
+        valid_rows = []
+        for row in rows:
+            score_overall = maybe_float(row.get("Score overall"))
+            if score_overall is None:
+                continue
+            copied = dict(row)
+            copied["Score overall"] = str(score_overall)
+            valid_rows.append(copied)
+
+        ranked_rows = sorted(valid_rows, key=lambda row: float(row["Score overall"]), reverse=True)
+        for rank, row in enumerate(ranked_rows, start=1):
+            method = row["Method"]
+            resource = resource_index.get((dataset_id, method), {})
+            metrics = {
+                slugify(key): maybe_float(value)
+                for key, value in row.items()
+                if key not in {"Method", "Language", "Deep Learning"}
+            }
+            entry = {
+                "dataset_id": dataset_id,
+                "origin": infer_origin(dataset_id),
+                "task_type": task_type,
+                "method": method,
+                "language": row["Language"],
+                "deep_learning": row["Deep Learning"] == "dl_yes",
+                "score_overall": float(row["Score overall"]),
+                "rank": rank,
+                "metrics": metrics,
+                "resource": resource,
+                "dataset_profile": dataset_profiles.get(dataset_id, _build_default_profile(dataset_id)),
+            }
+            entries.append(entry)
     return entries
 
 
@@ -310,6 +429,7 @@ def build_clean_bundle(raw_dir: Path, clean_dir: Path) -> dict:
     task_overview = build_task_overview(method_profiles)
     knowledge_base = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_raw_dir": str(raw_dir),
         "dataset_profiles": dict(sorted(dataset_profiles.items())),
         "dataset_rankings": dataset_rankings,
         "method_profiles": method_profiles,
