@@ -3,28 +3,19 @@
 
 ### Charting the Landscape of Spatial Omics Integration: A Comprehensive Benchmarking Study
 
-#### Penghui Yang<sup></sup>, Xiang Zhou*
+#### Penghui Yang<sup>†</sup>, Siyu Hou<sup>†</sup>, Hui Wan<sup>†</sup>, Xiang Zhou*
 
-  
-  
-  
+<sup>†</sup> These authors contributed equally to this work.
 
 In this study, we present a comprehensive benchmark to systematically evaluate the performance of existing spatial omics integration methods. By providing a structured comparison and scenario-specific recommendations, our benchmark aims to guide researchers in selecting appropriate methods for spatial omics data analysis, facilitating robust and reproducible integrative studies.
 
-  
-
 ![Image text](images/overview.png)
 
-  
-  
-
-## Methods information
+## 🧬 Methods information
 
 In total, our benchmarking study includes 58 experimental datasets and 60 simulated datasets, derived from 33 distinct source datasets, and systematically assesses a total of 37 integration methods.
 
-  
-
-### Multi-slice Integration
+### 🔬 Multi-slice Integration
 
 | Method | Version | GitHub Link |
 | :--- | :--- | :--- |
@@ -50,7 +41,7 @@ In total, our benchmarking study includes 58 experimental datasets and 60 simula
 | **stMSA** | github (221730c) | [Link](https://github.com/hannshu/stMSA) |
 | **SPIRAL** | v1.0 | [Link](https://github.com/guott15/SPIRAL) |
 | **STitch3D** | v1.0.3 | [Link](https://github.com/YangLabHKUST/STitch3D) |
-| **SPACEL** | v1.1.8 | [Link](https://github.com/QuKunLab/SPACEL) 
+| **SPACEL** | v1.1.8 | [Link](https://github.com/QuKunLab/SPACEL) |
 | **SANTO** | github (b82a7b9) | [Link](https://github.com/leihouyeung/SANTO) |
 | **PASTE** | v1.4.0 | [Link](https://github.com/raphael-group/paste) |
 | **PASTE2** | v1.0.1 | [Link](https://github.com/raphael-group/paste2) |
@@ -61,9 +52,7 @@ In total, our benchmarking study includes 58 experimental datasets and 60 simula
 | **GPSA** | v0.8 | [Link](https://github.com/andrewcharlesjones/spatial-alignment) |
 | **CAST** | v0.4 | [Link](https://github.com/wanglab-broad/CAST) |
 
-  
-
-### Spatial Multi-omics Integration
+### 🧪 Spatial Multi-omics Integration
 
 | Method | Version | GitHub Link |
 | :--- | :--- | :--- |
@@ -72,90 +61,119 @@ In total, our benchmarking study includes 58 experimental datasets and 60 simula
 | **COSMOS** | v1.0.1 | [Link](https://github.com/Lin-Xu-lab/COSMOS) |
 | **spaMGCN** | github (77dfe67) | [Link](https://github.com/hongfeiZhang-source/spaMGCN) |
 | **SSGATE** | github (706bc56) | [Link](https://github.com/Lv-BioInfo/SSGATE) |
-  
 
-## Requirements and Installation
+## 📊 Dataset Information
 
-  
+The benchmark is built on 33 source datasets spanning multiple species, tissues, and spatial transcriptomics technologies. Each source dataset is used to derive experimental and/or simulated benchmark instances.
+
+| ID | Species | Tissue | Technology | Source | Article |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | Human | Brain | Visium | [Link](https://github.com/LieberInstitute/HumanPilot) | [Link](https://doi.org/10.1038/s41593-020-00787-0) |
+| 2 | Mouse | Brain | STARmap | [Link](https://zenodo.org/records/8316334) | [Link](https://doi.org/10.1126/science.aat5691) |
+| 3 | Mouse | Brain | STARmap PLUS | [Link](https://singlecell.broadinstitute.org/single_cell/study/SCP1375) | [Link](https://doi.org/10.1038/s41593-022-01251-x) |
+| 4 | Mouse | Brain | MERFISH | [Link](https://cellxgene.cziscience.com/collections/31937775-0602-4e52-a799-b6acdd2bac2e) | [Link](https://doi.org/10.1016/j.cell.2022.12.010) |
+| 5 | Mouse | Brain (Olfactory bulb) | Stereo-seq | [Link](https://db.cngb.org/stomics/mosta/download/) | [Link](https://doi.org/10.1016/j.cell.2022.04.003) |
+| 6 | Mouse | Brain | Slide-seqV2 | [Link](https://www.braincelldata.org/) | [Link](https://doi.org/10.1038/s41586-023-06818-7) |
+| 7 | Mouse | Brain | MERSCOPE | [Link](https://github.com/AllenInstitute/abc_atlas_access/blob/main/descriptions/MERFISH-C57BL6J-638850.md) | [Link](https://doi.org/10.1038/s41586-023-06812-z) |
+| 8 | Mouse | Brain | Xenium | [Link](https://zenodo.org/records/11120307) | [Link](https://doi.org/10.1038/s41592-025-02617-2) |
+| 9 | Human | Lung | Visium | [Link](https://fetal-lung.cellgeni.sanger.ac.uk/visium.html) | [Link](https://doi.org/10.1016/j.cell.2022.11.005) |
+| 10 | Mouse | Lung | Visium | [Link](https://www.ebi.ac.uk/biostudies/studies/S-BSST1409) | [Link](https://doi.org/10.1038/s41588-024-01819-2) |
+| 11 | Human | Heart | Visium | [Link](https://www.heartcellatlas.org/) | [Link](https://doi.org/10.1038/s41586-023-06311-1) |
+| 12 | Mouse | Heart | Visium | [Link](https://figshare.com/collections/Reovirus_Induced_Myocarditis/5726372) | [Link](https://doi.org/10.1038/s44161-022-00138-1) |
+| 13 | Human | Liver | Visium | [Link](https://www.livercellatlas.org/index.php) | [Link](https://doi.org/10.1016/j.cell.2021.12.018) |
+| 14 | Mouse | Liver | Visium | [Link](https://www.livercellatlas.org/index.php) | [Link](https://doi.org/10.1016/j.cell.2021.12.018) |
+| 15 | Mouse | Brain | Visium | [GSE220442](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE220442) | [Link](https://doi.org/10.1186/s40478-022-01494-6) |
+| 16 | Mouse | Embryo | Visium | [Link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237308) | [Link](https://doi.org/10.1038/s41467-023-40155-7) |
+| 17 | Human | Bowel | Visium | [Link](https://zenodo.org/records/7760264) | [Link](https://doi.org/10.1038/s41698-023-00488-4) |
+| 18 | Human | Prostate | Visium | [Link](https://data.mendeley.com/datasets/svw96g68dv/1) | [Link](https://doi.org/10.1038/s41586-022-05023-2) |
+| 19 | Human | Pancreas | Visium | [Link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211895) | [Link](https://doi.org/10.1016/j.crmeth.2022.100340) |
+| 20 | Human | Breast | Visium | [Link](https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_web_summary.html) | — |
+| 21 | Mouse | Brain | MERFISH | [Link](https://zenodo.org/records/8316334) | [Link](https://doi.org/10.1038/s41586-021-03705-x) |
+| 22 | Mouse | Embryo | Stereo-seq | [Link](https://db.cngb.org/stomics/mosta/download/) | [Link](https://doi.org/10.1016/j.cell.2022.04.003) |
+| 23 | Mouse | Brain | Visium | [Link](https://figshare.com/collections/Squidpy_a_scalable_framework_for_spatial_single_cell_analysis/5273297/1) | — |
+| 24 | Mouse | Brain | Visium HD | [Link](https://www.10xgenomics.com/cn/datasets/visium-hd-cytassist-gene-expression-libraries-of-mouse-brain-he) | — |
+| 25 | Mouse | Brain (Olfactory bulb) | Visium | [Link](https://www.10xgenomics.com/datasets/adult-mouse-olfactory-bulb-1-standard-1) | — |
+| 26 | Mouse | Brain | MERFISH | [Link](https://alleninstitute.github.io/abc_atlas_access/descriptions/Zhuang-ABCA-1.html) | [Link](https://doi.org/10.1038/s41586-023-06808-9) |
+| 27 | Mouse | Brain (Olfactory bulb) | Slide-seqV2 | [Link](https://ftp.cngb.org/pub/SciRAID/stomics/STDS0000172/stomics/STSP0005412/) | [Link](https://doi.org/10.1038/s41593-022-01030-8) |
+| 28 | Mouse | Brain | Visium | [Link](https://genographix.com/home) | [Link](https://doi.org/10.1038/s41592-024-02325-3) |
+| 29 | Mouse | Brain (Olfactory bulb) | Visium | [Link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153859) | [Link](https://doi.org/10.1093/nar/gkad169) |
+| 30 | Mouse | Brain | Spatial ATAC-RNA-seq | [Link](https://zenodo.org/records/13932144) | [Link](https://doi.org/10.1038/s41586-023-05795-1) |
+| 31 | Mouse | Embryo | MISAR-seq | [Link](https://www.biosino.org/node/project/detail/OEP003285) | [Link](https://doi.org/10.1038/s41592-023-01884-1) |
+| 32 | Human | Lymph node | Visium (RNA+Protein) | [Link](https://zenodo.org/records/12654113) | [Link](https://doi.org/10.1101/2024.10.02.616189) |
+| 33 | Human | Tonsil | Visium (RNA+Protein) | [Link](https://zenodo.org/records/12654113) | [Link](https://doi.org/10.1101/2024.10.02.616189) |
+
+## ⚙️ Requirements and Installation
 
 All method-specific software environments are packaged as [Singularity](https://sylabs.io/singularity/) image files (`.sif`), ensuring consistent and reproducible execution across different computing nodes without manual dependency management. The `.sif` files can be obtained from [link].
-
-  
 
 To run the pipeline, Nextflow and Singularity must be available on your system:
 
 ```bash
-
-# Check Nextflow installation
-
-nextflow  -version
-
-  
-
-# Check Singularity installation
-
-singularity  --version
-
+nextflow -version
+singularity --version
 ```
 
-## Evaluation Pipeline
+Alternatively, each method can be run independently using the provided conda environment files under `conda_info/`:
 
-  
+```bash
+conda env create -f conda_info/<method>.yaml
+conda activate <method>
+```
+
+## 🚀 Evaluation Pipeline
 
 ### Workflow Management
 
-  
-
 The benchmarking pipeline is implemented using [Nextflow](https://www.nextflow.io/) (DSL2), enabling reproducible, scalable, and modular execution across high-performance computing environments. All methods are containerized via [Singularity](https://sylabs.io/singularity/), ensuring consistent software environments across different computing nodes.
-
-  
 
 The pipeline is organized into three main stages:
 
-  
+1. **Data Loading** (`LoadDatasets`): Preprocesses and filters input AnnData objects according to the specified gene selection strategy.
+2. **Method Execution** (`Run<Method>`): Each integration method runs as an independent process with method-specific resource configurations (CPU/GPU, memory, time limits).
+3. **Evaluation** (`RunEvaluation`): Computes a comprehensive set of benchmarking metrics for each method output.
 
-1.  **Data Loading** (`LoadDatasets`): Preprocesses and filters input AnnData objects according to the specified gene selection strategy.
+### Running the Pipeline
 
-2.  **Method Execution** (`Run<Method>`): Each integration method runs as an independent process with method-specific resource configurations (CPU/GPU, memory, time limits).
+**Option 1 — Nextflow directly** (interactive or within a screen/tmux session):
 
-3.  **Evaluation** (`RunEvaluation`): Computes a comprehensive set of benchmarking metrics for each method output.
+```bash
+cd src
+nextflow run main.nf
+```
 
-  
+**Option 2 — Submit via SLURM `sbatch`** (recommended for HPC clusters):
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=soi_bench
+#SBATCH --output=logs/nf_%j.log
+#SBATCH --time=24:00:00
+#SBATCH --mem=8G
+#SBATCH --cpus-per-task=2
+
+cd src
+nextflow run main.nf -with-trace -resume
+```
+
+Save the above as `run.sh` and submit with `sbatch run.sh`. Nextflow itself runs as a lightweight coordinator process; all compute-intensive tasks are dispatched as individual SLURM jobs defined in `nextflow.config`.
 
 ### Resource Configuration
 
-  
-
-GPU-accelerated methods are submitted to dedicated GPU partitions with appropriate SLURM directives. Memory and time allocations are automatically adjusted based on dataset size, with large-scale datasets (e.g., >10,000 spots) receiving elevated resource budgets. Failed tasks are logged and skipped without interrupting the overall pipeline execution.
-
-  
+GPU-accelerated methods are submitted to dedicated GPU partitions with appropriate SLURM directives. Memory and time allocations are automatically adjusted based on dataset size, with large-scale datasets receiving elevated resource budgets. Failed tasks are logged and skipped without interrupting the overall pipeline execution.
 
 ### Parameter Search
-
-  
 
 For methods with tunable hyperparameters (e.g., `knn`, `pcs`), the pipeline supports systematic parameter sweeps defined via `param_space` in the configuration file. When pre-optimized parameters are available (stored in `best_params.csv`), the pipeline automatically selects the optimal configuration for each method-dataset combination, bypassing the full search.
 
 ```groovy
-
 param_space = [
-
-seed: [42, 101, 123, 456, 789],
-
-knn: [5, 10, 15, 20, 30],
-
-pcs: [10, 20, 30, 50, 100, 150, 200],
-
-gene: ['all']
-
+    seed: [42, 101, 123, 456, 789],
+    knn:  [5, 10, 15, 20, 30],
+    pcs:  [10, 20, 30, 50, 100, 150, 200],
+    gene: ['all']
 ]
-
 ```
 
-  
-
 ### Reproducibility
-
-  
 
 All random seeds are fixed at both the Python and R levels to ensure reproducibility across runs. Nextflow's built-in caching mechanism allows interrupted pipelines to resume from the last completed task without redundant computation.

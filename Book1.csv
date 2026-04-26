@@ -1,0 +1,34 @@
+﻿Datasource,Species,Tissue,Technology,Source,Article
+1,Human,Brain,Visium,https://github.com/LieberInstitute/HumanPilot,https://doi.org/10.1038/s41593-020-00787-0
+2,Mouse,Brain,STARmap,https://zenodo.org/records/8316334,https://doi.org/10.1126/science.aat5691
+3,Mouse,Brain,STARmap PLUS,https://singlecell.broadinstitute.org/single_cell/study/SCP1375/integrative-in-situ-mapping-of-single-cell-transcriptional-states-and-tissue-histopathology-in-an-alzheimer-disease-model#study-summary,https://doi.org/10.1038/s41593-022-01251-x
+4,Mouse,Brain,MERFISH,https://cellxgene.cziscience.com/collections/31937775-0602-4e52-a799-b6acdd2bac2e,https://doi.org/10.1016/j.cell.2022.12.010
+5,Mouse,Brain (Olfactory bulb),Stereo-seq,https://db.cngb.org/stomics/mosta/download/,https://doi.org/10.1016/j.cell.2022.04.003
+6,Mouse,Brain,Slide-seqV2,https://www.braincelldata.org/,https://doi.org/10.1038/s41586-023-06818-7
+7,Mouse,Brain,MERSCOPE,https://github.com/AllenInstitute/abc_atlas_access/blob/main/descriptions/MERFISH-C57BL6J-638850.md,https://doi.org/10.1038/s41586-023-06812-z
+8,Mouse,Brain,Xenium,https://zenodo.org/records/11120307,https://doi.org/10.1038/s41592-025-02617-2
+9,Human,Lung,Visium,https://fetal-lung.cellgeni.sanger.ac.uk/visium.html,https://doi.org/10.1016/j.cell.2022.11.005
+10,Mouse,Lung,Visium,https://www.ebi.ac.uk/biostudies/studies/S-BSST1409,https://doi.org/10.1038/s41588-024-01819-2
+11,Human,Heart,Visium,https://www.heartcellatlas.org/,https://doi.org/10.1038/s41586-023-06311-1
+12,Mouse,Heart,Visium,https://figshare.com/collections/Reovirus_Induced_Myocarditis/5726372,https://doi.org/10.1038/s44161-022-00138-1
+13,Human,Liver,Visium,https://www.livercellatlas.org/index.php,https://doi.org/10.1016/j.cell.2021.12.018
+14,Mouse,Liver,Visium,https://www.livercellatlas.org/index.php,https://doi.org/10.1016/j.cell.2021.12.018
+15,Mouse,Brain,Visium,GSE220442,https://doi.org/10.1186/s40478-022-01494-6
+16,Mouse,Embryo,Visium,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237308,https://doi.org/10.1038/s41467-023-40155-7
+17,Human,Bowel,Visium,https://zenodo.org/records/7760264, https://doi.org/10.1038/s41698-023-00488-4 
+18,Human,Prostate,Visium,https://data.mendeley.com/datasets/svw96g68dv/1,https://doi.org/10.1038/s41586-022-05023-2
+19,Human,Pancreas,Visium,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211895,https://doi.org/10.1016/j.crmeth.2022.100340
+20,Human,Breast,Visium,https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_web_summary.html,/
+21,Mouse,Brain,MERFISH,https://zenodo.org/records/8316334,https://doi.org/10.1038/s41586-021-03705-x
+22,Mouse,Embryo,Stereo-seq,https://db.cngb.org/stomics/mosta/download/,https://doi.org/10.1016/j.cell.2022.04.003
+23,Mouse,Brain,Visium,https://figshare.com/collections/Squidpy_a_scalable_framework_for_spatial_single_cell_analysis/5273297/1,/
+24,Mouse,Brain,Visium HD,https://www.10xgenomics.com/cn/datasets/visium-hd-cytassist-gene-expression-libraries-of-mouse-brain-he,/
+25,Mouse,Brain (Olfactory bulb),Visium,https://www.10xgenomics.com/datasets/adult-mouse-olfactory-bulb-1-standard-1,/
+26,Mouse,Brain,MERFISH,https://alleninstitute.github.io/abc_atlas_access/descriptions/Zhuang-ABCA-1.html,https://doi.org/10.1038/s41586-023-06808-9
+27,Mouse,Brain (Olfactory bulb),Slide-seqV2,https://ftp.cngb.org/pub/SciRAID/stomics/STDS0000172/stomics/STSP0005412/,https://doi.org/10.1038/s41593-022-01030-8
+28,Mouse,Brain,Visium,https://genographix.com/home,https://doi.org/10.1038/s41592-024-02325-3
+29,Mouse,Brain (Olfactory bulb),Visium,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153859,https://doi.org/10.1093/nar/gkad169
+30,Mouse,Brain,spatial ATAC–RNA-seq,https://zenodo.org/records/13932144,https://doi.org/10.1038/s41586-023-05795-1
+31,Mouse,Embryo,MISAR-seq,https://www.biosino.org/node/project/detail/OEP003285,https://doi.org/10.1038/s41592-023-01884-1
+32,Human,Lymph node,Visium (RNA+Protein),https://zenodo.org/records/12654113,https://doi.org/10.1101/2024.10.02.616189
+33,Human,Tonsil,Visium (RNA+Protein),https://zenodo.org/records/12654113,https://doi.org/10.1101/2024.10.02.616189

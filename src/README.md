@@ -1,0 +1,96 @@
+# src — Source Code Overview
+
+This directory contains all pipeline source code for SOI_Bench.
+
+```
+src/
+├── main.nf                     # Nextflow workflow entry point
+├── nextflow.config             # Cluster and pipeline configuration
+├── modules/                    # Nextflow process definitions
+│   ├── load_datasets.nf        # Dataset loading and gene selection
+│   ├── run_methods.nf          # Per-tool execution processes (42 total)
+│   └── run_evaluation.nf       # Metric computation process
+├── shared_py/                  # Shared Python/R utilities
+│   ├── utils.py                # AnnData I/O and format validation helpers
+│   ├── gene_selection.py       # HVG / SVG gene filtering (via SPARKX)
+│   ├── clustering.py           # mclust and Leiden clustering wrappers
+│   └── run_sparkx.R            # R script for spatially variable gene selection
+├── tools_py/                   # Per-tool runner scripts and vendored dependencies
+│   ├── run_<Tool>.py           # One script per method (42 scripts)
+│   ├── best_params.csv         # Pre-tuned hyperparameters (multi-slice tasks)
+│   ├── best_params_omics.csv   # Pre-tuned hyperparameters (multi-omics tasks)
+│   ├── GLUE/                   # Vendored GLUE source (modified)
+│   ├── STG3Net/                # Vendored STG3Net source (modified)
+│   └── nichecompass/           # Vendored NicheCompass source (modified)
+└── metrics_py/                 # Evaluation metric implementations
+    ├── __init__.py             # Package-level exports
+    ├── evaluation.py           # High-level evaluation orchestration
+    └── *.py                    # Individual metric modules (see table below)
+```
+
+---
+
+## `modules/`
+
+Nextflow process definitions for the three pipeline stages:
+
+- **`load_datasets.nf`** — Reads each dataset's `.h5ad`, applies basic QC filters (`filter_cells`, `filter_genes`), and performs gene selection according to the configured mode (`all`, `hvg<N>`, or `svg<N>`). Outputs a filtered `.h5ad` ready for method execution.
+
+- **`run_methods.nf`** — One `process` block per integration method (42 total). Each process loads the appropriate Singularity container, imports the corresponding runner from `tools_py/`, and writes the method output back as an `.h5ad`. CPU-only processes use the `r_process` or `python_cpu_process` label; GPU-accelerated methods use `python_gpu_process` and additionally log peak GPU/CPU memory and wall-clock duration via `ResourceMonitor`.
+
+- **`run_evaluation.nf`** — Reconstructs the full expression matrix from method output, then calls the relevant metric functions from `metrics_py/` based on what the method produced (spatial alignment, integrated embedding, cluster assignments) and the dataset configuration.
+
+---
+
+## `shared_py/`
+
+Utilities shared across all tool runner scripts and Nextflow processes:
+
+| File | Purpose |
+| :--- | :--- |
+| `utils.py` | `get_ann_list` (unpacks multi-sample AnnData), `check_adata` (validates/repairs obs metadata), `create_lightweight_adata` (strips expression matrix for alignment-only methods), `ResourceMonitor` (tracks peak GPU/CPU usage) |
+| `gene_selection.py` | `compute_hvg` (Scanpy highly variable genes) and `compute_svg` (spatially variable genes via SPARKX, called through `rpy2`) |
+| `clustering.py` | `mclust_R` (model-based clustering via the R `mclust` package) and Leiden-based clustering wrappers, used post-embedding to generate `benchmark_cluster` labels |
+| `run_sparkx.R` | R script invoked by `gene_selection.py` to run SPARKX per sample and return ranked gene lists |
+
+---
+
+## `tools_py/`
+
+Each `run_<Tool>.py` exposes a single `run_<Tool>(adata, **kwargs)` function that:
+
+1. Extracts per-sample AnnData objects from `adata.uns['dataset']`
+2. Runs the method with the provided hyperparameters
+3. Writes results back into:
+   - `adata.obsm['integrated']` — batch-corrected embedding
+   - `adata.obsm['spatial_aligned']` — aligned spatial coordinates
+   - `adata.obs['benchmark_cluster']` — cluster labels
+4. Returns the updated `adata`
+
+Three methods with non-trivial internal dependencies are vendored directly:
+
+| Directory | Contents |
+| :--- | :--- |
+| `GLUE/` | Modified GLUE source used by multi-omics runner scripts |
+| `STG3Net/` | Modified STG3Net model code (patched for multi-GPU compatibility) |
+| `nichecompass/` | Modified NicheCompass source with custom data loaders |
+
+Pre-tuned hyperparameters identified during benchmarking:
+
+- **`best_params.csv`** — Optimal `knn` / `pcs` per method × dataset (multi-slice tasks)
+- **`best_params_omics.csv`** — Optimal parameters for multi-omics methods
+
+---
+
+## `metrics_py/`
+
+A self-contained Python package implementing all evaluation metrics. Each module exposes a `compute_<metric>(adata)` function returning a tidy `DataFrame` with columns `metric`, `value`, `group`, and `seed`.
+
+| Category | Metrics | Files |
+| :--- | :--- | :--- |
+| **Spatial pattern** | Moran's I, CHAOS, PAS, ASW-spatial, SCS | `morani.py`, `chaos.py`, `pas.py`, `asw_spatial.py`, `scs.py` |
+| **Batch correction** | ASW-batch, ASW-annotation, ASW-F1, cLISI, iLISI, LISI-F1, BEMS | `asw.py`, `lisi.py`, `bems.py` |
+| **Clustering** | ARI, NMI, Homogeneity, Completeness, Purity, V-measure | `ari.py`, `nmi.py`, `hom.py`, `com.py`, `purity.py`, `vmeasure.py` |
+| **Spatial mapping** | CI, PCC (pair/grid), SSIM (pair/grid) | `ci.py`, `pcc.py`, `ssim.py` |
+| **Cross-slice** | PAA, LTARI, CLC | `paa.py`, `ltari.py`, `clc.py` |
+| **Alignment quality** | AAS (rotation accuracy), MAE (distortion) | `aas.py`, `mae.py` |
