@@ -1,0 +1,7 @@
+.env
+.venv
+__pycache__
+.pytest_cache
+soi_bench_agent/data/raw
+soi_bench_agent/data/new_raw
+*.egg-info/
