@@ -24,3 +24,27 @@ def test_dataset_profile_contains_expected_experiment_metadata(tmp_path: Path) -
     assert d58["species"] == "Human"
     assert d58["tissue"] == "Tonsil"
     assert d58["sample_count"] == 2
+
+
+def test_new_raw_profiles_include_integration_and_simulation_tags(tmp_path: Path) -> None:
+    bundle = build_clean_bundle(Path("data/new_raw"), tmp_path)
+
+    d58 = bundle["dataset_profiles"]["D58"]
+    sd42 = bundle["dataset_profiles"]["SD42"]
+
+    assert d58["integration_mode"] == "multiomics_one_slice"
+    assert d58["sample_count"] == 1
+    assert d58["modality_count"] == 2
+    assert sd42["integration_mode"] == "cross-slice"
+    assert "multi_slice" in sd42["challenge_tags"]
+    assert "batch_effect" in sd42["challenge_tags"]
+
+
+def test_new_raw_duplicate_simulation_files_do_not_duplicate_entries(tmp_path: Path) -> None:
+    bundle = build_clean_bundle(Path("data/new_raw"), tmp_path)
+    unique_keys = {
+        (entry["dataset_id"], entry["task_type"], entry["method"])
+        for entry in bundle["benchmark_entries"]
+    }
+
+    assert len(unique_keys) == len(bundle["benchmark_entries"])

@@ -7,6 +7,7 @@ from typing import Any
 @dataclass(slots=True)
 class UserProfile:
     task_type: str | None = None
+    integration_mode: str | None = None
     technology: str | None = None
     species: str | None = None
     tissue: str | None = None
@@ -14,6 +15,7 @@ class UserProfile:
     modality_count: int | None = None
     num_locations: int | None = None
     num_features: int | None = None
+    challenge_tags: list[str] = field(default_factory=list)
     priority: str = "balanced"
     max_runtime_minutes: float | None = None
     max_memory_gb: float | None = None
@@ -23,6 +25,7 @@ class UserProfile:
     def to_dict(self) -> dict[str, Any]:
         return {
             "task_type": self.task_type,
+            "integration_mode": self.integration_mode,
             "technology": self.technology,
             "species": self.species,
             "tissue": self.tissue,
@@ -30,6 +33,7 @@ class UserProfile:
             "modality_count": self.modality_count,
             "num_locations": self.num_locations,
             "num_features": self.num_features,
+            "challenge_tags": self.challenge_tags,
             "priority": self.priority,
             "max_runtime_minutes": self.max_runtime_minutes,
             "max_memory_gb": self.max_memory_gb,
@@ -39,6 +43,7 @@ class UserProfile:
 
     def supporting_signal_count(self) -> int:
         fields = [
+            self.integration_mode,
             self.technology,
             self.species,
             self.tissue,
@@ -47,7 +52,10 @@ class UserProfile:
             self.num_locations,
             self.num_features,
         ]
-        return sum(value is not None for value in fields)
+        count = sum(value is not None for value in fields)
+        if self.challenge_tags:
+            count += 1
+        return count
 
 
 @dataclass(slots=True)

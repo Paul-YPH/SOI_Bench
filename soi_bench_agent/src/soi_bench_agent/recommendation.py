@@ -22,6 +22,48 @@ PRIORITY_ALIASES = {
     "balanced": ["balanced", "tradeoff", "default"],
 }
 
+INTEGRATION_MODE_ALIASES = {
+    "cross-slice": [
+        "cross-slice",
+        "cross slice",
+        "between slices",
+        "slice-to-slice",
+        "slice to slice",
+    ],
+    "multiomics_one_slice": [
+        "multiomics one-slice",
+        "multiomics one slice",
+        "one-slice multiomics",
+        "one slice multiomics",
+        "single-slice multiomics",
+        "single slice multiomics",
+        "same slice multiomics",
+        "same-slice multiomics",
+        "within one slice",
+    ],
+    "multiomics_cross_slice": [
+        "multiomics cross-slice",
+        "multiomics cross slice",
+        "cross-slice multiomics",
+        "cross slice multiomics",
+        "multiomics across slices",
+        "across-slice multiomics",
+        "across slice multiomics",
+    ],
+}
+
+CHALLENGE_TAG_ALIASES = {
+    "multi_slice": ["multi-slice", "multi slice", "5 slices", "five slices"],
+    "rigid_alignment": ["rotation", "rotated", "rigid alignment"],
+    "partial_overlap": ["partial overlap", "low overlap", "limited overlap"],
+    "batch_effect": ["batch effect", "batch shift", "pseudocount"],
+    "non_rigid_deformation": ["deformation", "distortion", "warped", "non-rigid"],
+    "cross_panel_integration": ["cross-panel", "cross panel", "feature mismatch", "panel variation"],
+    "statistical_simulation": ["statistical simulation", "model-based simulation", "scdesign3"],
+    "scale_variation": ["large scale", "scalability", "scale variation"],
+    "gene_coverage_variation": ["gene coverage", "low gene count", "sparse panel"],
+}
+
 
 def canonicalize_task(value: str | None) -> str | None:
     if not value:
@@ -61,6 +103,27 @@ def detect_priority(value: str | None) -> str | None:
     return None
 
 
+def detect_integration_mode(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = value.lower()
+    for canonical, aliases in INTEGRATION_MODE_ALIASES.items():
+        if canonical == normalized or any(alias in normalized for alias in aliases):
+            return canonical
+    return None
+
+
+def detect_challenge_tags(value: str | None) -> list[str]:
+    if not value:
+        return []
+    normalized = value.lower()
+    return [
+        canonical
+        for canonical, aliases in CHALLENGE_TAG_ALIASES.items()
+        if canonical == normalized or any(alias in normalized for alias in aliases)
+    ]
+
+
 def parse_first_int(pattern: str, text: str) -> int | None:
     match = re.search(pattern, text, flags=re.IGNORECASE)
     if not match:
@@ -89,12 +152,27 @@ class ProfileParser:
             key=len,
             reverse=True,
         )
+        self.integration_modes = sorted(
+            {profile["integration_mode"] for profile in profiles if profile.get("integration_mode")}
+        )
+        self.challenge_tags = sorted(
+            {
+                tag
+                for profile in profiles
+                for tag in profile.get("challenge_tags", [])
+                if tag
+            }
+        )
 
     def update_profile(self, profile: UserProfile, text: str) -> UserProfile:
         lowered = text.lower()
         task_type = canonicalize_task(lowered)
         if task_type:
             profile.task_type = task_type
+
+        integration_mode = detect_integration_mode(lowered)
+        if integration_mode:
+            profile.integration_mode = integration_mode
 
         for technology in self.technologies:
             if normalize_text(technology) and normalize_text(technology) in normalize_text(lowered):
@@ -141,6 +219,10 @@ class ProfileParser:
         detected_priority = detect_priority(lowered)
         if detected_priority is not None:
             profile.priority = detected_priority
+
+        for tag in detect_challenge_tags(lowered):
+            if tag not in profile.challenge_tags:
+                profile.challenge_tags.append(tag)
         if not task_type and text.strip():
             profile.extra_notes.append(text.strip())
         return profile
@@ -154,6 +236,8 @@ class Recommender:
         missing = []
         if not profile.task_type:
             missing.append("task_type")
+        if profile.task_type == "multiomics" and not profile.integration_mode:
+            missing.append("integration_mode")
         if profile.supporting_signal_count() < 2:
             if not profile.technology:
                 missing.append("technology")
@@ -267,6 +351,8 @@ class Recommender:
                 "technology": dataset["dataset_profile"].get("technology"),
                 "species": dataset["dataset_profile"].get("species"),
                 "tissue": dataset["dataset_profile"].get("tissue"),
+                "integration_mode": dataset["dataset_profile"].get("integration_mode"),
+                "challenge_tags": dataset["dataset_profile"].get("challenge_tags", []),
                 "sample_count": dataset["dataset_profile"].get("sample_count"),
                 "top_methods": dataset["top_methods"][:3],
             }
@@ -279,6 +365,8 @@ class Recommender:
             discarded_methods=filtered_out[:5],
             summary={
                 "task_type": profile.task_type,
+                "integration_mode": profile.integration_mode,
+                "challenge_tags": profile.challenge_tags,
                 "priority": profile.priority,
                 "used_exact_constraints": {
                     "max_runtime_minutes": profile.max_runtime_minutes,
@@ -292,6 +380,12 @@ class Recommender:
         score = 0.0
         if origin == "experiment":
             score += 0.5
+        integration_mode = dataset_profile.get("integration_mode")
+        if profile.integration_mode and integration_mode:
+            if profile.integration_mode == integration_mode:
+                score += 2.5
+            elif profile.integration_mode.startswith("multiomics") and integration_mode.startswith("multiomics"):
+                score += 1.0
         if profile.technology and dataset_profile.get("technology"):
             if normalize_text(profile.technology) == normalize_text(dataset_profile["technology"]):
                 score += 4.0
@@ -305,6 +399,10 @@ class Recommender:
             score += max(0.0, 1.5 - abs(profile.sample_count - dataset_profile["sample_count"]) * 0.4)
         if profile.modality_count and dataset_profile.get("modality_count"):
             score += max(0.0, 1.5 - abs(profile.modality_count - dataset_profile["modality_count"]) * 0.4)
+        if profile.challenge_tags:
+            dataset_tags = set(dataset_profile.get("challenge_tags", []))
+            overlap = len(set(profile.challenge_tags) & dataset_tags)
+            score += overlap * 1.0
         score += self._range_similarity(profile.num_locations, dataset_profile.get("num_locations", {}).get("median"), 2.0)
         score += self._range_similarity(profile.num_features, dataset_profile.get("num_features", {}).get("median"), 1.0)
         return score
@@ -354,6 +452,7 @@ class Recommender:
 def build_follow_up_questions(profile: UserProfile, missing_fields: list[str]) -> str:
     field_labels = {
         "task_type": "Which integration task do you need: matching, embedding, mapping, or multiomics integration?",
+        "integration_mode": "Is your case cross-slice, one-slice multiomics, or cross-slice multiomics?",
         "technology": "Which spatial technology are you using, for example Visium, MERFISH, Stereo-seq, Xenium, or Visium Omics?",
         "species": "Which species is your dataset from?",
         "tissue": "Which tissue or organ is the dataset from?",
@@ -380,6 +479,7 @@ def render_rule_based_answer(
     lines.extend([
         "## Recommendation",
         f"Task: `{profile.task_type}`",
+        f"Integration mode: `{profile.integration_mode or 'unspecified'}`",
         f"Priority: `{profile.priority}`",
         "",
         "Top methods:",
@@ -395,7 +495,10 @@ def render_rule_based_answer(
         lines.append(f"   Evidence: {dataset_bits}")
     lines.extend(["", "Closest benchmark datasets:"])
     for item in result.matched_datasets[:3]:
+        challenge_suffix = ""
+        if item["challenge_tags"]:
+            challenge_suffix = f", tags {', '.join(item['challenge_tags'])}"
         lines.append(
-            f"- `{item['dataset_id']}`: {item['technology']}, {item['species']}, {item['tissue']}, similarity {item['similarity']}"
+            f"- `{item['dataset_id']}`: {item['technology']}, {item['species']}, {item['tissue']}, {item['integration_mode']}, similarity {item['similarity']}{challenge_suffix}"
         )
     return "\n".join(lines)

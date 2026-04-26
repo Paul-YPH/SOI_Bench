@@ -7,7 +7,7 @@ from openai import OpenAI
 
 from .models import UserProfile
 from .prompts import load_prompt
-from .recommendation import canonicalize_priority, canonicalize_task
+from .recommendation import canonicalize_priority, canonicalize_task, detect_challenge_tags, detect_integration_mode
 
 
 def extract_json_object(text: str) -> dict[str, Any]:
@@ -43,6 +43,7 @@ class OpenAIHelper:
         output = self.response_text(prompt, user_input)
         parsed = extract_json_object(output)
         profile.task_type = canonicalize_task(parsed.get("task_type")) or profile.task_type
+        profile.integration_mode = detect_integration_mode(parsed.get("integration_mode")) or profile.integration_mode
         profile.technology = parsed.get("technology") or profile.technology
         profile.species = parsed.get("species") or profile.species
         profile.tissue = parsed.get("tissue") or profile.tissue
@@ -50,6 +51,10 @@ class OpenAIHelper:
         profile.modality_count = parsed.get("modality_count") or profile.modality_count
         profile.num_locations = parsed.get("num_locations") or profile.num_locations
         profile.num_features = parsed.get("num_features") or profile.num_features
+        for raw_tag in parsed.get("challenge_tags", []):
+            for tag in detect_challenge_tags(raw_tag):
+                if tag not in profile.challenge_tags:
+                    profile.challenge_tags.append(tag)
         profile.priority = canonicalize_priority(parsed.get("priority") or profile.priority)
         profile.max_runtime_minutes = parsed.get("max_runtime_minutes") or profile.max_runtime_minutes
         profile.max_memory_gb = parsed.get("max_memory_gb") or profile.max_memory_gb
